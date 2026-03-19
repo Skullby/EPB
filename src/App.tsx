@@ -107,7 +107,7 @@ function App() {
         </section>
 
         <section id="servicios" className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
-          <SectionHeader eyebrow={services.eyebrow} title={services.title} description="Se replica la sección principal del sitio original, manteniendo el texto base y ordenando la lectura con una interfaz más clara." />
+          <SectionHeader eyebrow={services.eyebrow} title={services.title} description="Presentamos los servicios clave con una estructura más clara, priorizando lectura, jerarquía visual y comprensión rápida." />
           <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
             <article className="rounded-[2rem] bg-epb-ink p-8 text-white shadow-soft lg:p-10">
               <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-200">{services.main.title}</p>
@@ -137,7 +137,7 @@ function App() {
 
         <section id="herramientas" className="border-y border-black/5 bg-white/70">
           <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
-            <SectionHeader eyebrow={tools.eyebrow} title={tools.title} description="La información se conserva esencialmente igual a la home original; el cambio está en jerarquía visual, layout y legibilidad." />
+            <SectionHeader eyebrow={tools.eyebrow} title={tools.title} description="Las capacidades operativas se organizan en bloques más claros para facilitar lectura, jerarquía y comprensión comercial." />
             <div className="grid gap-5 lg:grid-cols-2">
               {tools.items.map((item) => (
                 <article key={item.title} className="rounded-[1.75rem] border border-epb-line bg-white p-7 shadow-soft">
@@ -209,7 +209,7 @@ function App() {
           </div>
 
           <div className="mt-14">
-            <SectionHeader eyebrow="RECONOCIMIENTOS" title="Reconocimientos institucionales" description="Se conservaron los clientes y distinciones visibles en la home original." />
+            <SectionHeader eyebrow="RECONOCIMIENTOS" title="Reconocimientos institucionales" description="Resumen de clientes y distinciones institucionales destacadas." />
             <div className="grid gap-5 xl:grid-cols-3">
               {recognitions.map((recognition) => (
                 <article key={recognition.client} className="rounded-[1.75rem] border border-epb-line bg-white p-7 shadow-soft">
@@ -227,22 +227,40 @@ function App() {
 
         <section id="novedades" className="border-y border-black/5 bg-white/70">
           <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
-            <SectionHeader eyebrow="NOVEDADES" title="Prensa, eventos y presencia pública" description="Se listan notas y apariciones con el mismo texto base del original, reorganizadas en tarjetas para facilitar lectura y scroll." />
+            <SectionHeader eyebrow="NOVEDADES" title="Prensa, eventos y presencia pública" description="Selección de notas, eventos y apariciones públicas organizadas para una lectura más simple." />
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-              {press.map(([tag, source, title, href]) => (
-                <a
-                  key={`${source}-${title}`}
-                  href={href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group flex h-full flex-col rounded-[1.5rem] border border-epb-line bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:border-epb-brand/30"
-                >
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-epb-brand">{tag}</p>
-                  <p className="mt-2 text-sm font-medium text-epb-slate">{source}</p>
-                  <h3 className="mt-4 text-xl font-semibold leading-8 text-epb-ink">{title}</h3>
-                  <span className="mt-6 inline-flex text-sm font-semibold text-epb-ink group-hover:text-epb-brand">Leer más →</span>
-                </a>
-              ))}
+              {press.map(([tag, source, title, href]) => {
+                const hasLink = Boolean(href)
+
+                if (!hasLink) {
+                  return (
+                    <article
+                      key={`${source}-${title}`}
+                      className="flex h-full flex-col rounded-[1.5rem] border border-dashed border-epb-line bg-white p-6 shadow-soft"
+                    >
+                      <p className="text-xs font-semibold uppercase tracking-[0.3em] text-epb-brand">{tag}</p>
+                      <p className="mt-2 text-sm font-medium text-epb-slate">{source}</p>
+                      <h3 className="mt-4 text-xl font-semibold leading-8 text-epb-ink">{title}</h3>
+                      <span className="mt-6 inline-flex text-sm font-semibold text-amber-700">Contenido pendiente</span>
+                    </article>
+                  )
+                }
+
+                return (
+                  <a
+                    key={`${source}-${title}`}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group flex h-full flex-col rounded-[1.5rem] border border-epb-line bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:border-epb-brand/30"
+                  >
+                    <p className="text-xs font-semibold uppercase tracking-[0.3em] text-epb-brand">{tag}</p>
+                    <p className="mt-2 text-sm font-medium text-epb-slate">{source}</p>
+                    <h3 className="mt-4 text-xl font-semibold leading-8 text-epb-ink">{title}</h3>
+                    <span className="mt-6 inline-flex text-sm font-semibold text-epb-ink group-hover:text-epb-brand">Leer más →</span>
+                  </a>
+                )
+              })}
             </div>
 
             <div className="mt-12 grid gap-5 lg:grid-cols-3">
@@ -292,10 +310,6 @@ function App() {
                 <p className="text-sm font-semibold uppercase tracking-[0.28em] text-emerald-200">Email</p>
                 <p className="mt-2 text-xl font-semibold">info@epb.com.ar</p>
               </a>
-              <a href={CONTACT.originalSite} target="_blank" rel="noreferrer" className="rounded-[1.5rem] border border-white/15 bg-white/5 px-6 py-5 transition hover:bg-white/10">
-                <p className="text-sm font-semibold uppercase tracking-[0.28em] text-emerald-200">Sitio original</p>
-                <p className="mt-2 text-xl font-semibold">www.epb.com.ar</p>
-              </a>
             </div>
           </div>
         </section>
@@ -304,7 +318,7 @@ function App() {
       <footer className="border-t border-black/5 bg-[#f4f1ea]">
         <div className="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-8 text-sm text-epb-slate lg:flex-row lg:items-center lg:justify-between lg:px-8">
           <p>EPB — Recupero de activos y gestión de mora.</p>
-          <p>Rediseño visual con contenido base fiel al sitio original.</p>
+          <p>Presentación institucional preparada para revisión comercial.</p>
         </div>
       </footer>
     </div>
