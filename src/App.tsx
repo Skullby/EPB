@@ -140,7 +140,71 @@ function App() {
             </div>
 
             <div className="rounded-[2rem] border border-white/70 bg-white p-6 shadow-soft lg:p-8">
-              <div className="rounded-[1.5rem] bg-epb-ink p-6 text-white">
+              <div className="overflow-hidden rounded-[1.5rem] border border-epb-line bg-white shadow-[0_24px_70px_rgba(15,23,42,0.08)]">
+                <div className="flex items-center justify-between border-b border-epb-line bg-slate-50/90 px-4 py-3">
+                  <div className="flex items-center gap-2">
+                    <span className="h-2.5 w-2.5 rounded-full bg-rose-400" aria-hidden="true" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-amber-400" aria-hidden="true" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" aria-hidden="true" />
+                  </div>
+                  <span className="rounded-full bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-epb-slate">
+                    Banner placeholder
+                  </span>
+                </div>
+
+                <div className="relative aspect-[16/10] overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(16,185,129,0.28),_transparent_42%),linear-gradient(135deg,_#ecfdf5_0%,_#ffffff_48%,_#f8fafc_100%)] p-4 sm:p-5">
+                  <div className="absolute inset-x-6 top-5 h-24 rounded-full bg-emerald-200/40 blur-3xl" aria-hidden="true" />
+                  <div className="relative flex h-full flex-col justify-between rounded-[1.2rem] border border-white/80 bg-white/80 p-4 backdrop-blur sm:p-5">
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.26em] text-epb-brand">Hero visual</p>
+                        <h3 className="mt-2 max-w-xs text-xl font-semibold leading-tight text-epb-ink sm:text-2xl">
+                          Una portada clara para mostrar propuesta, prueba y siguiente paso.
+                        </h3>
+                      </div>
+                      <div className="hidden rounded-2xl bg-epb-ink px-4 py-3 text-right text-white sm:block">
+                        <p className="text-[11px] uppercase tracking-[0.22em] text-emerald-200">Estado</p>
+                        <p className="mt-2 text-lg font-semibold">Listo para reemplazo</p>
+                      </div>
+                    </div>
+
+                    <div className="grid gap-3 sm:grid-cols-[1.1fr_0.9fr]">
+                      <div className="rounded-[1.1rem] bg-epb-ink p-4 text-white">
+                        <p className="text-xs uppercase tracking-[0.22em] text-emerald-200">Mensaje principal</p>
+                        <div className="mt-4 space-y-2">
+                          <div className="h-2.5 w-4/5 rounded-full bg-white/90" aria-hidden="true" />
+                          <div className="h-2.5 w-full rounded-full bg-white/40" aria-hidden="true" />
+                          <div className="h-2.5 w-3/4 rounded-full bg-white/40" aria-hidden="true" />
+                        </div>
+                        <div className="mt-5 flex gap-2">
+                          <div className="h-9 w-28 rounded-full bg-emerald-400/90" aria-hidden="true" />
+                          <div className="h-9 w-24 rounded-full border border-white/30" aria-hidden="true" />
+                        </div>
+                      </div>
+
+                      <div className="grid gap-3">
+                        <div className="rounded-[1.1rem] border border-emerald-100 bg-emerald-50 p-4">
+                          <p className="text-xs uppercase tracking-[0.22em] text-epb-brand">Prueba visual</p>
+                          <div className="mt-4 flex items-end gap-2" aria-hidden="true">
+                            <div className="h-10 w-1/4 rounded-t-2xl bg-emerald-200" />
+                            <div className="h-16 w-1/4 rounded-t-2xl bg-emerald-300" />
+                            <div className="h-12 w-1/4 rounded-t-2xl bg-emerald-400" />
+                            <div className="h-20 w-1/4 rounded-t-2xl bg-epb-brand" />
+                          </div>
+                        </div>
+                        <div className="rounded-[1.1rem] border border-epb-line bg-white p-4">
+                          <p className="text-xs uppercase tracking-[0.22em] text-epb-slate">Espacio editable</p>
+                          <p className="mt-3 text-sm leading-6 text-epb-slate">
+                            Reemplazable por captura, mockup o creatividad final sin cambiar la estructura del hero.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 rounded-[1.5rem] bg-epb-ink p-6 text-white">
                 <p className="text-sm uppercase tracking-[0.28em] text-emerald-200">Canal digital</p>
                 <h3 className="mt-4 text-2xl font-semibold">Una base lista para captar, responder y convertir mejor.</h3>
                 <ul className="mt-6 space-y-4 text-sm leading-7 text-slate-200" aria-label="Resultados del sitio">
@@ -149,6 +213,7 @@ function App() {
                   <li>• Estructura adaptable para sumar casos, credenciales y nuevos servicios.</li>
                 </ul>
               </div>
+
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 <div className="rounded-2xl border border-epb-line bg-epb-soft p-4">
                   <p className="text-sm text-epb-slate">Tiempo de respuesta</p>
