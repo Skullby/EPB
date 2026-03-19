@@ -1,433 +1,312 @@
-const EXTERNAL_LINKS = {
-  whatsapp: 'https://wa.me/5491112345678?text=Hola%20EPB%2C%20quiero%20hablar%20sobre%20un%20proyecto',
-  calendar: 'https://cal.com/epb/diagnostico',
-  email: 'mailto:hola@epb.digital',
-  linkedin: 'https://www.linkedin.com/company/epb-digital',
-} as const
+import {
+  CONTACT,
+  about,
+  csr,
+  hero,
+  press,
+  recognitions,
+  services,
+  technology,
+  tools,
+} from './content/siteContent'
 
-const quickActions = [
-  { title: 'Pedir diagnóstico', description: 'Revisamos tu caso y te proponemos próximos pasos claros.', href: EXTERNAL_LINKS.calendar },
-  { title: 'Hablar por WhatsApp', description: 'Canal directo para consultas rápidas y coordinación comercial.', href: EXTERNAL_LINKS.whatsapp },
-  { title: 'Solicitar propuesta', description: 'Armamos una propuesta simple, alineada a tu etapa y objetivo.', href: EXTERNAL_LINKS.email },
-]
-
-const services = [
-  'Estrategia comercial y posicionamiento',
-  'Sitios web orientados a conversión',
-  'Automatización de procesos y follow-up',
-  'Campañas y activos digitales de adquisición',
-]
-
-const process = [
-  {
-    step: '01',
-    title: 'Entendemos el negocio',
-    copy: 'Ordenamos objetivos, público, oferta y fricciones para decidir con foco comercial.',
-  },
-  {
-    step: '02',
-    title: 'Diseñamos una ruta simple',
-    copy: 'Priorizamos lo que impacta primero: mensaje, canal, activos y automatizaciones.',
-  },
-  {
-    step: '03',
-    title: 'Implementamos y medimos',
-    copy: 'Lanzamos rápido, ajustamos con datos y dejamos una base escalable para crecer.',
-  },
-]
-
-const reasons = [
-  'Bajamos la complejidad: hablamos claro, proponemos rápido y ejecutamos sin vueltas.',
-  'Pensamos en conversión antes que en decoración: cada sección tiene un propósito comercial.',
-  'Trabajamos con procesos reutilizables para que la operación no dependa de apagar incendios.',
-]
-
-const team = [
-  'Perfil híbrido entre estrategia, producto y ejecución digital.',
-  'Acompañamiento cercano, con foco en decisiones accionables.',
-  'Capacidad para pasar de idea a implementación sin fricción innecesaria.',
-]
-
-const clientLogos = ['Estudio Norte', 'Grupo Delta', 'Casa Nexo', 'Orbita Health', 'Punto Base']
-
-function SectionTitle({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) {
+function SectionHeader({ eyebrow, title, description }: { eyebrow: string; title: string; description?: string }) {
   return (
     <div className="mx-auto mb-10 max-w-3xl text-center lg:mb-14">
-      <span className="mb-3 inline-flex rounded-full bg-emerald-50 px-4 py-1 text-sm font-semibold uppercase tracking-[0.24em] text-epb-brand">
-        {eyebrow}
-      </span>
-      <h2 className="text-3xl font-semibold tracking-tight text-epb-ink sm:text-4xl">{title}</h2>
-      <p className="mt-4 text-base leading-7 text-epb-slate sm:text-lg">{description}</p>
+      <p className="text-sm font-semibold uppercase tracking-[0.3em] text-epb-brand">{eyebrow}</p>
+      <h2 className="mt-3 text-3xl font-semibold tracking-tight text-epb-ink sm:text-4xl">{title}</h2>
+      {description ? <p className="mt-4 text-base leading-7 text-epb-slate sm:text-lg">{description}</p> : null}
     </div>
   )
 }
 
 function App() {
   return (
-    <div className="bg-white text-epb-ink">
+    <div className="min-h-screen bg-[#f4f1ea] text-epb-ink">
       <a
-        href="#contenido-principal"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-epb-ink focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:text-white"
+        href="#contenido"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-full focus:bg-epb-ink focus:px-4 focus:py-3 focus:text-white"
       >
         Saltar al contenido
       </a>
 
-      <header className="sticky top-0 z-50 border-b border-epb-line/80 bg-white/90 backdrop-blur">
+      <header className="sticky top-0 z-50 border-b border-black/5 bg-[#f4f1ea]/90 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 lg:px-8">
-          <a href="#home" aria-label="Ir al inicio de EPB Digital" className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-epb-ink text-sm font-bold text-white">EPB</div>
+          <a href="#inicio" className="flex items-center gap-3" aria-label="Ir al inicio">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-epb-ink text-sm font-bold tracking-[0.3em] text-white">
+              EPB
+            </div>
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-epb-slate">EPB Digital</p>
-              <p className="text-xs text-epb-slate">Estrategia, web y automatización</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-epb-brand">Estudio Palmero</p>
+              <p className="text-sm text-epb-slate">Recupero y gestión de mora</p>
             </div>
           </a>
-          <nav aria-label="Navegación principal" className="hidden items-center gap-6 text-sm font-medium text-epb-slate md:flex">
+
+          <nav className="hidden items-center gap-6 text-sm font-medium text-epb-slate md:flex" aria-label="Principal">
             <a href="#servicios">Servicios</a>
-            <a href="#metodo">Cómo lo hacemos</a>
-            <a href="#nosotros">Quiénes somos</a>
+            <a href="#herramientas">Herramientas</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#novedades">Novedades</a>
             <a href="#contacto">Contacto</a>
           </nav>
+
           <a
-            href={EXTERNAL_LINKS.calendar}
+            href={CONTACT.whatsapp}
             target="_blank"
             rel="noreferrer"
-            aria-label="Agendar llamada en calendario externo"
-            className="rounded-full bg-epb-ink px-4 py-3 text-sm font-semibold text-white transition hover:bg-epb-brandDark sm:px-5"
+            className="rounded-full bg-epb-ink px-4 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5"
           >
-            <span className="sm:hidden">Agendar</span>
-            <span className="hidden sm:inline">Agendar llamada</span>
+            Contacto
           </a>
         </div>
       </header>
 
-      <main id="contenido-principal">
-        <section id="home" className="bg-hero">
-          <div className="mx-auto grid max-w-7xl gap-14 px-5 py-16 lg:grid-cols-[1.2fr_0.8fr] lg:px-8 lg:py-24">
+      <main id="contenido">
+        <section id="inicio" className="relative overflow-hidden border-b border-black/5 bg-[#f4f1ea]">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(15,118,110,0.18),transparent_30%),radial-gradient(circle_at_left,rgba(249,115,22,0.12),transparent_28%)]" />
+          <div className="relative mx-auto grid max-w-7xl gap-10 px-5 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-24">
             <div className="max-w-3xl">
-              <span className="inline-flex rounded-full border border-emerald-200 bg-white/80 px-4 py-1 text-sm font-semibold text-epb-brand shadow-sm">
-                Impulsamos crecimiento con foco en resultados
-              </span>
-              <h1 className="mt-6 text-4xl font-semibold leading-tight tracking-tight text-epb-ink sm:text-5xl lg:text-6xl">
-                Convertí tu presencia digital en una máquina más clara para vender, escalar y responder mejor.
-              </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-epb-slate">
-                En EPB ayudamos a empresas y equipos comerciales a ordenar mensaje, activos y operación digital para que cada contacto tenga una ruta más simple hacia la conversión.
+              <p className="inline-flex rounded-full border border-epb-brand/20 bg-white/80 px-4 py-1 text-sm font-semibold text-epb-brand shadow-soft">
+                {hero.badge}
               </p>
+              <h1 className="mt-6 text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+                {hero.title}
+              </h1>
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-epb-slate">{hero.intro}</p>
+
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                 <a
-                  href={EXTERNAL_LINKS.calendar}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Abrir agenda para pedir una propuesta"
+                  href="#contacto"
                   className="rounded-full bg-epb-brand px-7 py-4 text-center text-base font-semibold text-white shadow-soft transition hover:bg-epb-brandDark"
                 >
-                  Quiero una propuesta
+                  Quiero comunicarme
                 </a>
                 <a
-                  href="#servicios"
+                  href={CONTACT.selfService}
+                  target="_blank"
+                  rel="noreferrer"
                   className="rounded-full border border-epb-line bg-white px-7 py-4 text-center text-base font-semibold text-epb-ink transition hover:border-epb-brand hover:text-epb-brand"
                 >
-                  Ver servicios
+                  Gestión de cobranzas
                 </a>
               </div>
-              <ul className="mt-10 grid gap-4 sm:grid-cols-3" aria-label="Beneficios principales">
-                {['Implementación rápida', 'Comunicación clara', 'Canales conectados'].map((item) => (
-                  <li key={item} className="rounded-2xl border border-white/60 bg-white/80 p-4 shadow-soft">
-                    <p className="text-sm font-semibold text-epb-ink">{item}</p>
-                  </li>
+            </div>
+
+            <div className="grid gap-4">
+              {hero.reasons.map((item) => {
+                const [title, text] = item.split(' — ')
+                return (
+                  <article key={item} className="rounded-[1.75rem] border border-white/70 bg-white/80 p-6 shadow-soft backdrop-blur">
+                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-epb-brand">{title}</p>
+                    <p className="mt-3 text-xl font-semibold leading-8 text-epb-ink">{text}</p>
+                  </article>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section id="servicios" className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
+          <SectionHeader eyebrow={services.eyebrow} title={services.title} description="Se replica la sección principal del sitio original, manteniendo el texto base y ordenando la lectura con una interfaz más clara." />
+          <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+            <article className="rounded-[2rem] bg-epb-ink p-8 text-white shadow-soft lg:p-10">
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-200">{services.main.title}</p>
+              <h3 className="mt-4 text-3xl font-semibold tracking-tight">{services.main.description}</h3>
+              <p className="mt-8 text-sm font-semibold uppercase tracking-[0.3em] text-emerald-200">¿Cómo lo hacemos?</p>
+              <ul className="mt-5 space-y-4 text-base leading-8 text-slate-200">
+                {services.main.steps.map((step) => (
+                  <li key={step}>{step}</li>
                 ))}
               </ul>
-            </div>
+            </article>
 
-            <div className="rounded-[2rem] border border-white/70 bg-white p-6 shadow-soft lg:p-8">
-              <div className="overflow-hidden rounded-[1.5rem] border border-epb-line bg-white shadow-[0_24px_70px_rgba(15,23,42,0.08)]">
-                <div className="flex items-center justify-between border-b border-epb-line bg-slate-50/90 px-4 py-3">
-                  <div className="flex items-center gap-2">
-                    <span className="h-2.5 w-2.5 rounded-full bg-rose-400" aria-hidden="true" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-amber-400" aria-hidden="true" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" aria-hidden="true" />
-                  </div>
-                  <span className="rounded-full bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-epb-slate">
-                    Banner placeholder
-                  </span>
-                </div>
-
-                <div className="relative aspect-[16/10] overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(16,185,129,0.28),_transparent_42%),linear-gradient(135deg,_#ecfdf5_0%,_#ffffff_48%,_#f8fafc_100%)] p-4 sm:p-5">
-                  <div className="absolute inset-x-6 top-5 h-24 rounded-full bg-emerald-200/40 blur-3xl" aria-hidden="true" />
-                  <div className="relative flex h-full flex-col justify-between rounded-[1.2rem] border border-white/80 bg-white/80 p-4 backdrop-blur sm:p-5">
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.26em] text-epb-brand">Hero visual</p>
-                        <h3 className="mt-2 max-w-xs text-xl font-semibold leading-tight text-epb-ink sm:text-2xl">
-                          Una portada clara para mostrar propuesta, prueba y siguiente paso.
-                        </h3>
-                      </div>
-                      <div className="hidden rounded-2xl bg-epb-ink px-4 py-3 text-right text-white sm:block">
-                        <p className="text-[11px] uppercase tracking-[0.22em] text-emerald-200">Estado</p>
-                        <p className="mt-2 text-lg font-semibold">Listo para reemplazo</p>
-                      </div>
-                    </div>
-
-                    <div className="grid gap-3 sm:grid-cols-[1.1fr_0.9fr]">
-                      <div className="rounded-[1.1rem] bg-epb-ink p-4 text-white">
-                        <p className="text-xs uppercase tracking-[0.22em] text-emerald-200">Mensaje principal</p>
-                        <div className="mt-4 space-y-2">
-                          <div className="h-2.5 w-4/5 rounded-full bg-white/90" aria-hidden="true" />
-                          <div className="h-2.5 w-full rounded-full bg-white/40" aria-hidden="true" />
-                          <div className="h-2.5 w-3/4 rounded-full bg-white/40" aria-hidden="true" />
-                        </div>
-                        <div className="mt-5 flex gap-2">
-                          <div className="h-9 w-28 rounded-full bg-emerald-400/90" aria-hidden="true" />
-                          <div className="h-9 w-24 rounded-full border border-white/30" aria-hidden="true" />
-                        </div>
-                      </div>
-
-                      <div className="grid gap-3">
-                        <div className="rounded-[1.1rem] border border-emerald-100 bg-emerald-50 p-4">
-                          <p className="text-xs uppercase tracking-[0.22em] text-epb-brand">Prueba visual</p>
-                          <div className="mt-4 flex items-end gap-2" aria-hidden="true">
-                            <div className="h-10 w-1/4 rounded-t-2xl bg-emerald-200" />
-                            <div className="h-16 w-1/4 rounded-t-2xl bg-emerald-300" />
-                            <div className="h-12 w-1/4 rounded-t-2xl bg-emerald-400" />
-                            <div className="h-20 w-1/4 rounded-t-2xl bg-epb-brand" />
-                          </div>
-                        </div>
-                        <div className="rounded-[1.1rem] border border-epb-line bg-white p-4">
-                          <p className="text-xs uppercase tracking-[0.22em] text-epb-slate">Espacio editable</p>
-                          <p className="mt-3 text-sm leading-6 text-epb-slate">
-                            Reemplazable por captura, mockup o creatividad final sin cambiar la estructura del hero.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-6 rounded-[1.5rem] bg-epb-ink p-6 text-white">
-                <p className="text-sm uppercase tracking-[0.28em] text-emerald-200">Canal digital</p>
-                <h3 className="mt-4 text-2xl font-semibold">Una base lista para captar, responder y convertir mejor.</h3>
-                <ul className="mt-6 space-y-4 text-sm leading-7 text-slate-200" aria-label="Resultados del sitio">
-                  <li>• Sitio web preparado para comunicar valor y activar consultas.</li>
-                  <li>• Accesos directos a WhatsApp, mail y agenda comercial.</li>
-                  <li>• Estructura adaptable para sumar casos, credenciales y nuevos servicios.</li>
-                </ul>
-              </div>
-
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                <div className="rounded-2xl border border-epb-line bg-epb-soft p-4">
-                  <p className="text-sm text-epb-slate">Tiempo de respuesta</p>
-                  <p className="mt-2 text-2xl font-semibold">Más rápido</p>
-                </div>
-                <div className="rounded-2xl border border-epb-line bg-epb-soft p-4">
-                  <p className="text-sm text-epb-slate">Mensaje comercial</p>
-                  <p className="mt-2 text-2xl font-semibold">Más claro</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
-          <SectionTitle
-            eyebrow="Acciones rápidas"
-            title="Elegí el próximo paso sin perder tiempo"
-            description="Diseñamos la experiencia para que una consulta no quede congelada. Cada acceso apunta a mover una oportunidad hacia adelante."
-          />
-          <div className="grid gap-6 lg:grid-cols-3">
-            {quickActions.map((action) => (
+            <aside className="rounded-[2rem] border border-epb-line bg-white p-8 shadow-soft lg:p-10">
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-epb-brand">Marca complementaria</p>
+              <p className="mt-4 text-lg leading-8 text-epb-slate">{services.main.note}</p>
               <a
-                key={action.title}
-                href={action.href}
+                href={services.main.noteHref}
                 target="_blank"
                 rel="noreferrer"
-                aria-label={`${action.title} en enlace externo`}
-                className="rounded-[1.75rem] border border-epb-line bg-white p-7 shadow-soft transition hover:-translate-y-1 hover:border-epb-brand"
+                className="mt-6 inline-flex rounded-full border border-epb-line px-5 py-3 text-sm font-semibold text-epb-ink transition hover:border-epb-brand hover:text-epb-brand"
               >
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-epb-brand">Acción directa</p>
-                <h3 className="mt-4 text-2xl font-semibold">{action.title}</h3>
-                <p className="mt-4 leading-7 text-epb-slate">{action.description}</p>
-                <span className="mt-6 inline-flex text-sm font-semibold text-epb-ink">Ir ahora →</span>
+                Ver AgenciaPalmero
               </a>
-            ))}
+            </aside>
           </div>
         </section>
 
-        <section id="servicios" className="border-y border-epb-line bg-epb-soft">
-          <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
-            <SectionTitle
-              eyebrow="Servicios"
-              title="Soluciones para ordenar la captación y sostener el crecimiento"
-              description="Integramos estrategia, implementación y optimización para que el canal digital acompañe objetivos comerciales reales."
-            />
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-              {services.map((service) => (
-                <article key={service} className="rounded-[1.75rem] border border-epb-line bg-white p-6 shadow-soft">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-lg font-bold text-epb-brand">+</div>
-                  <h3 className="mt-5 text-xl font-semibold">{service}</h3>
-                  <p className="mt-3 leading-7 text-epb-slate">Implementación enfocada en claridad, velocidad de respuesta y mejor experiencia para tus potenciales clientes.</p>
+        <section id="herramientas" className="border-y border-black/5 bg-white/70">
+          <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
+            <SectionHeader eyebrow={tools.eyebrow} title={tools.title} description="La información se conserva esencialmente igual a la home original; el cambio está en jerarquía visual, layout y legibilidad." />
+            <div className="grid gap-5 lg:grid-cols-2">
+              {tools.items.map((item) => (
+                <article key={item.title} className="rounded-[1.75rem] border border-epb-line bg-white p-7 shadow-soft">
+                  <h3 className="text-xl font-semibold text-epb-ink">{item.title}</h3>
+                  {'body' in item && item.body ? <p className="mt-4 leading-8 text-epb-slate">{item.body}</p> : null}
+                  {'bullets' in item && item.bullets ? (
+                    <ul className="mt-4 space-y-3 text-base leading-8 text-epb-slate">
+                      {item.bullets.map((bullet) => (
+                        <li key={bullet}>• {bullet}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-10 rounded-[2rem] bg-epb-ink p-8 text-white shadow-soft lg:p-10">
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-200">{technology.title}</p>
+              <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                {technology.items.map((item) => (
+                  <div key={item} className="rounded-[1.25rem] border border-white/10 bg-white/5 px-5 py-4 text-sm font-medium tracking-[0.04em] text-slate-200">
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="nosotros" className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
+          <SectionHeader eyebrow={about.eyebrow} title={about.title} />
+          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+            <div className="rounded-[2rem] border border-epb-line bg-white p-8 shadow-soft lg:p-10">
+              {about.body.map((paragraph) => (
+                <p key={paragraph} className="mb-5 last:mb-0 text-lg leading-8 text-epb-slate">
+                  {paragraph}
+                </p>
+              ))}
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                {about.stats.map((stat) => (
+                  <div key={stat.label} className="rounded-[1.5rem] bg-epb-soft p-5">
+                    <p className="text-sm font-semibold uppercase tracking-[0.28em] text-epb-brand">{stat.label}</p>
+                    <p className="mt-3 text-4xl font-semibold tracking-tight text-epb-ink">{stat.value}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="grid gap-5">
+              <div className="rounded-[2rem] bg-[#fcfaf6] p-8 shadow-soft ring-1 ring-black/5 lg:p-10">
+                <h3 className="text-sm font-semibold uppercase tracking-[0.3em] text-epb-brand">MISIÓN</h3>
+                <p className="mt-4 text-lg leading-8 text-epb-slate">{about.mission}</p>
+              </div>
+              <div className="rounded-[2rem] bg-[#fcfaf6] p-8 shadow-soft ring-1 ring-black/5 lg:p-10">
+                <h3 className="text-sm font-semibold uppercase tracking-[0.3em] text-epb-brand">VALORES</h3>
+                <div className="mt-5 flex flex-wrap gap-3">
+                  {about.values.map((value) => (
+                    <span key={value} className="rounded-full border border-epb-brand/20 bg-white px-4 py-2 text-sm font-semibold text-epb-ink shadow-sm">
+                      {value}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="rounded-[2rem] bg-[#fcfaf6] p-8 shadow-soft ring-1 ring-black/5 lg:p-10">
+                <h3 className="text-sm font-semibold uppercase tracking-[0.3em] text-epb-brand">VISIÓN</h3>
+                <p className="mt-4 text-lg leading-8 text-epb-slate">{about.vision}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-14">
+            <SectionHeader eyebrow="RECONOCIMIENTOS" title="Reconocimientos institucionales" description="Se conservaron los clientes y distinciones visibles en la home original." />
+            <div className="grid gap-5 xl:grid-cols-3">
+              {recognitions.map((recognition) => (
+                <article key={recognition.client} className="rounded-[1.75rem] border border-epb-line bg-white p-7 shadow-soft">
+                  <h3 className="text-xl font-semibold text-epb-ink">{recognition.client}</h3>
+                  <ul className="mt-5 space-y-3 text-sm leading-7 text-epb-slate">
+                    {recognition.items.map((item) => (
+                      <li key={item}>• {item}</li>
+                    ))}
+                  </ul>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="metodo" className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
-          <SectionTitle
-            eyebrow="Cómo lo hacemos"
-            title="Un proceso corto, medible y orientado a decisiones"
-            description="No proponemos más complejidad de la necesaria. Priorizamos lo que genera tracción y deja una base reutilizable para crecer."
-          />
-          <div className="grid gap-6 lg:grid-cols-3">
-            {process.map((item) => (
-              <article key={item.step} className="rounded-[1.75rem] bg-epb-ink p-7 text-white shadow-soft">
-                <p className="text-sm font-semibold tracking-[0.24em] text-emerald-200">{item.step}</p>
-                <h3 className="mt-4 text-2xl font-semibold">{item.title}</h3>
-                <p className="mt-4 leading-7 text-slate-300">{item.copy}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-epb-sand">
-          <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 lg:grid-cols-[1fr_1fr] lg:px-8">
-            <div>
-              <SectionTitle
-                eyebrow="Por qué EPB"
-                title="Porque necesitás avanzar con foco comercial y una ejecución que no se trabe"
-                description="EPB combina criterio de negocio, sensibilidad de producto y velocidad de implementación para mover proyectos con menos fricción."
-              />
+        <section id="novedades" className="border-y border-black/5 bg-white/70">
+          <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
+            <SectionHeader eyebrow="NOVEDADES" title="Prensa, eventos y presencia pública" description="Se listan notas y apariciones con el mismo texto base del original, reorganizadas en tarjetas para facilitar lectura y scroll." />
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {press.map(([tag, source, title, href]) => (
+                <a
+                  key={`${source}-${title}`}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group flex h-full flex-col rounded-[1.5rem] border border-epb-line bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:border-epb-brand/30"
+                >
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-epb-brand">{tag}</p>
+                  <p className="mt-2 text-sm font-medium text-epb-slate">{source}</p>
+                  <h3 className="mt-4 text-xl font-semibold leading-8 text-epb-ink">{title}</h3>
+                  <span className="mt-6 inline-flex text-sm font-semibold text-epb-ink group-hover:text-epb-brand">Leer más →</span>
+                </a>
+              ))}
             </div>
-            <div className="grid gap-5 self-center">
-              {reasons.map((reason) => (
-                <div key={reason} className="rounded-[1.5rem] border border-orange-100 bg-white p-6 shadow-soft">
-                  <p className="text-lg leading-8 text-epb-slate">{reason}</p>
-                </div>
+
+            <div className="mt-12 grid gap-5 lg:grid-cols-3">
+              {csr.map((item) => (
+                <article key={item.title} className="rounded-[1.75rem] bg-epb-ink p-7 text-white shadow-soft">
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-200">{item.tag}</p>
+                  <h3 className="mt-3 text-2xl font-semibold">{item.title}</h3>
+                  <p className="mt-4 leading-8 text-slate-300">{item.description}</p>
+                </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="nosotros" className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-            <div className="rounded-[2rem] border border-dashed border-epb-line bg-epb-soft p-8 text-center shadow-soft">
-              <div className="flex h-72 items-center justify-center rounded-[1.5rem] border border-epb-line bg-white">
-                <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.24em] text-epb-brand">Placeholder visual</p>
-                  <p className="mt-3 text-lg text-epb-slate">Reemplazar por foto de equipo, founder o pieza de marca.</p>
-                </div>
+        <section id="contacto" className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
+          <div className="grid gap-8 rounded-[2rem] bg-epb-ink p-8 text-white shadow-soft lg:grid-cols-[0.95fr_1.05fr] lg:p-12">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-200">CONTACTO</p>
+              <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">Hacenos tu consulta</h2>
+              <div className="mt-6 space-y-3 text-lg leading-8 text-slate-300">
+                <p>{CONTACT.address}</p>
+                <p>{CONTACT.city}</p>
+                <p>{CONTACT.phone}</p>
+                <p>{CONTACT.hotline}</p>
+              </div>
+              <p className="mt-8 text-sm font-semibold uppercase tracking-[0.3em] text-emerald-200">HORARIO DE ATENCIÓN</p>
+              <div className="mt-4 space-y-3 text-base leading-8 text-slate-300">
+                <p>Atención Telefónica Lunes a Viernes 07:30 a 20:30hs - Sábados 8 a 12.30hs</p>
+                <p>Caja Lunes a Viernes de 9 a 18hs - Sábados 9 a 12hs. / Chatbot 24hs</p>
               </div>
             </div>
-            <div>
-              <SectionTitle
-                eyebrow="Quiénes somos"
-                title="Un equipo chico, resolutivo y obsesionado con que las cosas pasen"
-                description="Trabajamos cerca del negocio para detectar lo importante, bajar ruido y construir activos digitales que sostengan crecimiento con más orden."
-              />
-              <div className="space-y-4">
-                {team.map((item) => (
-                  <div key={item} className="rounded-[1.5rem] border border-epb-line bg-white p-5 shadow-soft">
-                    <p className="leading-7 text-epb-slate">{item}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
 
-        <section className="border-y border-epb-line bg-epb-soft">
-          <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
-            <SectionTitle
-              eyebrow="Clientes"
-              title="Marcas y equipos que confiaron en procesos más claros"
-              description="Podés reemplazar estos placeholders por logos reales cuando estén disponibles. La sección ya queda lista para credenciales futuras."
-            />
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-              {clientLogos.map((logo) => (
-                <div key={logo} className="flex min-h-28 items-center justify-center rounded-[1.5rem] border border-dashed border-epb-line bg-white px-6 text-center text-lg font-semibold text-epb-slate shadow-soft">
-                  {logo}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="contacto" className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
-          <div className="grid gap-8 rounded-[2rem] bg-epb-ink p-8 text-white shadow-soft lg:grid-cols-[1.1fr_0.9fr] lg:p-12">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-emerald-200">Contacto / canal digital</p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">Si querés ordenar tu canal digital, empecemos por una conversación concreta.</h2>
-              <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
-                Contanos qué querés destrabar: presencia web, generación de demanda, automatización o estructura comercial. Respondemos con foco y próximos pasos accionables.
-              </p>
-            </div>
             <div className="grid gap-4 self-start">
-              <a
-                href={EXTERNAL_LINKS.whatsapp}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Escribir por WhatsApp"
-                className="rounded-[1.5rem] bg-white px-6 py-5 text-epb-ink transition hover:bg-emerald-50"
-              >
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-epb-brand">WhatsApp</p>
-                <p className="mt-2 text-xl font-semibold">Escribir ahora</p>
+              <a href={CONTACT.whatsapp} target="_blank" rel="noreferrer" className="rounded-[1.5rem] bg-white px-6 py-5 text-epb-ink transition hover:bg-emerald-50">
+                <p className="text-sm font-semibold uppercase tracking-[0.28em] text-epb-brand">Quiero comunicarme</p>
+                <p className="mt-2 text-xl font-semibold">Contacto comercial</p>
               </a>
-              <a href={EXTERNAL_LINKS.email} aria-label="Enviar email a hola arroba epb punto digital" className="rounded-[1.5rem] border border-white/15 bg-white/5 px-6 py-5 transition hover:bg-white/10">
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-emerald-200">Email</p>
-                <p className="mt-2 text-xl font-semibold">hola@epb.digital</p>
+              <a href={CONTACT.selfService} target="_blank" rel="noreferrer" className="rounded-[1.5rem] border border-white/15 bg-white/5 px-6 py-5 transition hover:bg-white/10">
+                <p className="text-sm font-semibold uppercase tracking-[0.28em] text-emerald-200">Gestión de cobranzas</p>
+                <p className="mt-2 text-xl font-semibold">Portal de autogestión</p>
               </a>
-              <a
-                href={EXTERNAL_LINKS.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Abrir LinkedIn de EPB Digital"
-                className="rounded-[1.5rem] border border-white/15 bg-white/5 px-6 py-5 transition hover:bg-white/10"
-              >
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-emerald-200">LinkedIn</p>
-                <p className="mt-2 text-xl font-semibold">EPB Digital</p>
+              <a href={CONTACT.phoneHref} className="rounded-[1.5rem] border border-white/15 bg-white/5 px-6 py-5 transition hover:bg-white/10">
+                <p className="text-sm font-semibold uppercase tracking-[0.28em] text-emerald-200">Teléfono</p>
+                <p className="mt-2 text-xl font-semibold">{CONTACT.phone}</p>
+              </a>
+              <a href={CONTACT.email} className="rounded-[1.5rem] border border-white/15 bg-white/5 px-6 py-5 transition hover:bg-white/10">
+                <p className="text-sm font-semibold uppercase tracking-[0.28em] text-emerald-200">Email</p>
+                <p className="mt-2 text-xl font-semibold">info@epb.com.ar</p>
+              </a>
+              <a href={CONTACT.originalSite} target="_blank" rel="noreferrer" className="rounded-[1.5rem] border border-white/15 bg-white/5 px-6 py-5 transition hover:bg-white/10">
+                <p className="text-sm font-semibold uppercase tracking-[0.28em] text-emerald-200">Sitio original</p>
+                <p className="mt-2 text-xl font-semibold">www.epb.com.ar</p>
               </a>
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="border-t border-epb-line bg-white">
-        <div className="mx-auto grid max-w-7xl gap-10 px-5 py-10 lg:grid-cols-[1.2fr_0.8fr_0.8fr] lg:px-8">
-          <div>
-            <p className="text-lg font-semibold">EPB Digital</p>
-            <p className="mt-3 max-w-md leading-7 text-epb-slate">
-              Estrategia, implementación y optimización digital para equipos que necesitan crecer con más claridad y menos fricción operativa.
-            </p>
-          </div>
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-epb-slate">Secciones</p>
-            <nav aria-label="Secciones del pie" className="mt-4 grid gap-3 text-sm text-epb-slate">
-              <a href="#servicios">Servicios</a>
-              <a href="#metodo">Cómo lo hacemos</a>
-              <a href="#nosotros">Quiénes somos</a>
-              <a href="#contacto">Contacto</a>
-            </nav>
-          </div>
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-epb-slate">Canales</p>
-            <div className="mt-4 grid gap-3 text-sm text-epb-slate">
-              <a href={EXTERNAL_LINKS.whatsapp} target="_blank" rel="noreferrer" aria-label="Abrir WhatsApp de EPB Digital">WhatsApp</a>
-              <a href={EXTERNAL_LINKS.email}>hola@epb.digital</a>
-              <a href={EXTERNAL_LINKS.linkedin} target="_blank" rel="noreferrer" aria-label="Abrir LinkedIn de EPB Digital">LinkedIn</a>
-            </div>
-          </div>
+      <footer className="border-t border-black/5 bg-[#f4f1ea]">
+        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-8 text-sm text-epb-slate lg:flex-row lg:items-center lg:justify-between lg:px-8">
+          <p>EPB — Recupero de activos y gestión de mora.</p>
+          <p>Rediseño visual con contenido base fiel al sitio original.</p>
         </div>
       </footer>
-
-      <a
-        href={EXTERNAL_LINKS.whatsapp}
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Abrir WhatsApp"
-        className="fixed bottom-5 right-5 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500 text-2xl text-white shadow-soft transition hover:scale-105"
-      >
-        ⌁
-      </a>
     </div>
   )
 }
