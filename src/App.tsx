@@ -1,3 +1,4 @@
+import type { MouseEvent } from 'react'
 import {
   CONTACT,
   about,
@@ -9,6 +10,7 @@ import {
   technology,
   tools,
 } from './content/siteContent'
+import { trackCTAEvent } from './lib/analytics'
 
 function SectionHeader({ eyebrow, title, description }: { eyebrow: string; title: string; description?: string }) {
   return (
@@ -18,6 +20,14 @@ function SectionHeader({ eyebrow, title, description }: { eyebrow: string; title
       {description ? <p className="mt-4 text-base leading-7 text-epb-slate sm:text-lg">{description}</p> : null}
     </div>
   )
+}
+
+const handleCTA = (eventName: string, section: string, label?: string) => (event: MouseEvent<HTMLAnchorElement>) => {
+  trackCTAEvent({
+    name: eventName,
+    section,
+    label: label ?? event.currentTarget.href,
+  })
 }
 
 function App() {
@@ -55,6 +65,7 @@ function App() {
             target="_blank"
             rel="noreferrer"
             className="rounded-full bg-epb-ink px-4 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5"
+            onClick={handleCTA('header_contact_click', 'header', 'contacto')}
           >
             Contacto
           </a>
@@ -78,6 +89,7 @@ function App() {
                 <a
                   href="#contacto"
                   className="rounded-full bg-epb-brand px-7 py-4 text-center text-base font-semibold text-white shadow-soft transition hover:bg-epb-brandDark"
+                  onClick={handleCTA('hero_contact_click', 'hero', 'quiero_comunicarme')}
                 >
                   Quiero comunicarme
                 </a>
@@ -86,6 +98,7 @@ function App() {
                   target="_blank"
                   rel="noreferrer"
                   className="rounded-full border border-epb-line bg-white px-7 py-4 text-center text-base font-semibold text-epb-ink transition hover:border-epb-brand hover:text-epb-brand"
+                  onClick={handleCTA('hero_self_service_click', 'hero', 'gestion_de_cobranzas')}
                 >
                   Gestión de cobranzas
                 </a>
@@ -128,6 +141,7 @@ function App() {
                 target="_blank"
                 rel="noreferrer"
                 className="mt-6 inline-flex rounded-full border border-epb-line px-5 py-3 text-sm font-semibold text-epb-ink transition hover:border-epb-brand hover:text-epb-brand"
+                onClick={handleCTA('services_note_click', 'services', 'ver_agenciapalmero')}
               >
                 Ver AgenciaPalmero
               </a>
@@ -253,6 +267,7 @@ function App() {
                     target="_blank"
                     rel="noreferrer"
                     className="group flex h-full flex-col rounded-[1.5rem] border border-epb-line bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:border-epb-brand/30"
+                    onClick={handleCTA('press_item_click', 'press', title)}
                   >
                     <p className="text-xs font-semibold uppercase tracking-[0.3em] text-epb-brand">{tag}</p>
                     <p className="mt-2 text-sm font-medium text-epb-slate">{source}</p>
@@ -294,19 +309,39 @@ function App() {
             </div>
 
             <div className="grid gap-4 self-start">
-              <a href={CONTACT.whatsapp} target="_blank" rel="noreferrer" className="rounded-[1.5rem] bg-white px-6 py-5 text-epb-ink transition hover:bg-emerald-50">
+              <a
+                href={CONTACT.whatsapp}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-[1.5rem] bg-white px-6 py-5 text-epb-ink transition hover:bg-emerald-50"
+                onClick={handleCTA('contact_whatsapp_click', 'contact', 'contacto_comercial')}
+              >
                 <p className="text-sm font-semibold uppercase tracking-[0.28em] text-epb-brand">Quiero comunicarme</p>
                 <p className="mt-2 text-xl font-semibold">Contacto comercial</p>
               </a>
-              <a href={CONTACT.selfService} target="_blank" rel="noreferrer" className="rounded-[1.5rem] border border-white/15 bg-white/5 px-6 py-5 transition hover:bg-white/10">
+              <a
+                href={CONTACT.selfService}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-[1.5rem] border border-white/15 bg-white/5 px-6 py-5 transition hover:bg-white/10"
+                onClick={handleCTA('contact_self_service_click', 'contact', 'portal_autogestion')}
+              >
                 <p className="text-sm font-semibold uppercase tracking-[0.28em] text-emerald-200">Gestión de cobranzas</p>
                 <p className="mt-2 text-xl font-semibold">Portal de autogestión</p>
               </a>
-              <a href={CONTACT.phoneHref} className="rounded-[1.5rem] border border-white/15 bg-white/5 px-6 py-5 transition hover:bg-white/10">
+              <a
+                href={CONTACT.phoneHref}
+                className="rounded-[1.5rem] border border-white/15 bg-white/5 px-6 py-5 transition hover:bg-white/10"
+                onClick={handleCTA('contact_phone_click', 'contact', CONTACT.phone)}
+              >
                 <p className="text-sm font-semibold uppercase tracking-[0.28em] text-emerald-200">Teléfono</p>
                 <p className="mt-2 text-xl font-semibold">{CONTACT.phone}</p>
               </a>
-              <a href={CONTACT.email} className="rounded-[1.5rem] border border-white/15 bg-white/5 px-6 py-5 transition hover:bg-white/10">
+              <a
+                href={CONTACT.email}
+                className="rounded-[1.5rem] border border-white/15 bg-white/5 px-6 py-5 transition hover:bg-white/10"
+                onClick={handleCTA('contact_email_click', 'contact', 'info@epb.com.ar')}
+              >
                 <p className="text-sm font-semibold uppercase tracking-[0.28em] text-emerald-200">Email</p>
                 <p className="mt-2 text-xl font-semibold">info@epb.com.ar</p>
               </a>
