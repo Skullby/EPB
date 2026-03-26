@@ -47,7 +47,7 @@ src/
 
 ## Notes
 - Use `epb.com.ar` as the wording/reference source when content is in doubt.
-- Workspace metadata in `/home/skullby/.openclaw/workspace/projects/epb/STATUS.md` is the canonical operational summary.
+- Workspace metadata in `/home/skullby/skullby-software/workspace/projects/epb/STATUS.md` is the canonical operational summary.
 - Any future improvements should prioritize editorial polish, asset upgrades, and final brand/content approval.
 
 ## Recommended next steps
