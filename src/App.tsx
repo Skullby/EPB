@@ -35,7 +35,7 @@ function useReveal<T extends HTMLElement>() {
           observer.unobserve(el)
         }
       },
-      { threshold: 0.12 },
+      { threshold: 0.01, rootMargin: '0px 0px -10% 0px' },
     )
     observer.observe(el)
     return () => observer.disconnect()
@@ -96,7 +96,6 @@ function App() {
   }
 
   /* Reveal refs for each section */
-  const heroRef = useReveal<HTMLElement>()
   const servicesRef = useReveal<HTMLElement>()
   const toolsRef = useReveal<HTMLElement>()
   const aboutRef = useReveal<HTMLElement>()
@@ -114,15 +113,15 @@ function App() {
       </a>
 
       {/* ── Header ─────────────────────────────────────────────── */}
-      <header className="sticky top-0 z-50 border-b border-black/5 bg-[#f4f1ea]/90 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 lg:px-8">
-          <a href="#inicio" className="flex items-center gap-3" aria-label="Ir al inicio">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-epb-brand text-sm font-bold tracking-[0.3em] text-white">
+      <header className="sticky top-0 z-50 border-b border-black/5 bg-[#f4f1ea]/95 backdrop-blur">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-5 lg:px-8">
+          <a href="#inicio" className="min-w-0 flex items-center gap-3" aria-label="Ir al inicio">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-epb-brand text-sm font-bold tracking-[0.3em] text-white">
               EPB
             </div>
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-epb-brand">Estudio Palmero</p>
-              <p className="text-sm text-epb-slate">Recupero y gestión de mora</p>
+            <div className="min-w-0">
+              <p className="truncate text-[11px] font-semibold uppercase tracking-[0.24em] text-epb-brand sm:text-xs sm:tracking-[0.3em]">Estudio Palmero</p>
+              <p className="truncate text-xs text-epb-slate sm:text-sm">Recupero y gestión de mora</p>
             </div>
           </a>
 
@@ -138,10 +137,20 @@ function App() {
             href={CONTACT.whatsapp}
             target="_blank"
             rel="noreferrer"
-            className="cta-glow rounded-full bg-epb-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-epb-brandDark hover:-translate-y-0.5"
+            className="cta-glow shrink-0 rounded-full bg-epb-brand px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-epb-brandDark hover:-translate-y-0.5 sm:px-5 sm:py-3"
           >
             Contacto
           </a>
+        </div>
+
+        <div className="border-t border-black/5 px-4 py-2 md:hidden">
+          <nav className="mx-auto flex max-w-7xl items-center gap-2 overflow-x-auto text-xs font-semibold text-epb-slate" aria-label="Principal móvil">
+            <a href="#servicios" className="whitespace-nowrap rounded-full border border-epb-line bg-white px-3 py-2 transition hover:border-epb-brand hover:text-epb-brand">Servicios</a>
+            <a href="#herramientas" className="whitespace-nowrap rounded-full border border-epb-line bg-white px-3 py-2 transition hover:border-epb-brand hover:text-epb-brand">Herramientas</a>
+            <a href="#nosotros" className="whitespace-nowrap rounded-full border border-epb-line bg-white px-3 py-2 transition hover:border-epb-brand hover:text-epb-brand">Nosotros</a>
+            <a href="#novedades" className="whitespace-nowrap rounded-full border border-epb-line bg-white px-3 py-2 transition hover:border-epb-brand hover:text-epb-brand">Novedades</a>
+            <a href="#contacto" className="whitespace-nowrap rounded-full border border-epb-line bg-white px-3 py-2 transition hover:border-epb-brand hover:text-epb-brand">Contacto</a>
+          </nav>
         </div>
       </header>
 
@@ -149,8 +158,7 @@ function App() {
         {/* ── Hero ────────────────────────────────────────────── */}
         <section
           id="inicio"
-          ref={heroRef}
-          className="reveal relative overflow-hidden border-b border-black/5 bg-[#f4f1ea]"
+          className="relative overflow-hidden border-b border-black/5 bg-[#f4f1ea]"
         >
           {/* Subtle animated background blobs */}
           <div className="pointer-events-none absolute inset-0" aria-hidden="true">
@@ -183,6 +191,21 @@ function App() {
                 >
                   Gestión de cobranzas
                 </a>
+              </div>
+
+              <div className="mt-8 grid gap-3 sm:grid-cols-3">
+                <div className="rounded-[1.25rem] border border-epb-brand/10 bg-white/70 px-4 py-4 shadow-soft">
+                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-epb-brand">Trayectoria</p>
+                  <p className="mt-2 text-lg font-semibold text-epb-ink">Desde 1996</p>
+                </div>
+                <div className="rounded-[1.25rem] border border-epb-brand/10 bg-white/70 px-4 py-4 shadow-soft">
+                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-epb-brand">Cobertura</p>
+                  <p className="mt-2 text-lg font-semibold text-epb-ink">Bancos, empresas y PyMES</p>
+                </div>
+                <div className="rounded-[1.25rem] border border-epb-brand/10 bg-white/70 px-4 py-4 shadow-soft">
+                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-epb-brand">Canal directo</p>
+                  <p className="mt-2 text-lg font-semibold text-epb-ink">WhatsApp + autogestión</p>
+                </div>
               </div>
             </div>
 
@@ -514,9 +537,9 @@ function App() {
         target="_blank"
         rel="noreferrer"
         aria-label="Abrir WhatsApp"
-        className="fixed bottom-5 right-5 z-[60] inline-flex items-center gap-3 rounded-full bg-[#25D366] px-5 py-4 text-sm font-semibold text-white shadow-[0_20px_45px_rgba(37,211,102,0.35)] transition hover:-translate-y-0.5 hover:shadow-[0_24px_55px_rgba(37,211,102,0.42)]"
+        className="fixed bottom-4 right-4 z-[60] inline-flex items-center gap-2 rounded-full bg-[#25D366] px-3 py-3 text-sm font-semibold text-white shadow-[0_20px_45px_rgba(37,211,102,0.35)] transition hover:-translate-y-0.5 hover:shadow-[0_24px_55px_rgba(37,211,102,0.42)] sm:bottom-5 sm:right-5 sm:gap-3 sm:px-5 sm:py-4"
       >
-        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-lg">✆</span>
+        <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/15 text-lg sm:h-10 sm:w-10">✆</span>
         <span className="hidden sm:inline">WhatsApp</span>
       </a>
 

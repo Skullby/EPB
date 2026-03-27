@@ -30,11 +30,11 @@ export const services = {
     description: 'Recupero de Activos de Empresas y Pymes.',
     steps: [
       '1. Negociación customizada por profesionales de Economía, Legales y Relaciones Públicas.',
-      '2.Gestión de terreno: visitador domiciliario',
+      '2. Gestión de terreno: visitador domiciliario',
       '3. Encuadres objetivo y subjetivo: situación patrimonial y crediticia, visión de expertos en la cobranza',
     ],
     note:
-      'AgenciaPalmero es nuestra nueva marca de los servicios de recupero de mora y gestion de cobranzas de mora temprana y tardia.',
+      'AgenciaPalmero es nuestra nueva marca de los servicios de recupero de mora y gestión de cobranzas de mora temprana y tardía.',
     noteHref: 'https://agenciapalmero.com.ar',
   },
 } as const
@@ -60,7 +60,7 @@ export const tools = {
       bullets: [
         'IVR Inteligente: Verifica la identidad del interlocutor y su intención de pago.',
         'Campañas de MAILING: con beneficios de pago inmediato, recordatorios de pago con diferentes textos acordes a la instancia de mora.',
-        'Campañas de SMS: Incluye un LINK para dirigirse a la plataforma de autogestión con la posiblidad de enviar invitación para conversar por whatsapp, recordatorios de pago, etc.',
+        'Campañas de SMS: Incluye un link para dirigirse a la plataforma de autogestión con la posibilidad de enviar invitación para conversar por WhatsApp, recordatorios de pago, etc.',
       ],
     },
     {
@@ -77,7 +77,7 @@ export const tools = {
 } as const
 
 export const technology = {
-  title: 'TECNOLOGÍA INNOVACIÓN CONSTANTE',
+  title: 'TECNOLOGÍA E INNOVACIÓN CONSTANTE',
   items: [
     'SERVERS EN DATA CENTER',
     'ALTA DISPONIBILIDAD',
