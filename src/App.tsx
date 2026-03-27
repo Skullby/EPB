@@ -83,19 +83,21 @@ function App() {
 
       <main id="contenido">
         <section id="inicio" className="relative overflow-hidden border-b border-black/5 bg-[#f4f1ea]">
-          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(120,20,26,0.98)_0%,rgba(154,28,35,0.96)_38%,rgba(245,240,233,0.9)_100%)]" />
-          <div className="absolute inset-y-0 right-0 hidden w-[42%] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.28),transparent_58%)] lg:block" />
-          <div className="relative mx-auto max-w-7xl px-5 py-14 lg:px-8 lg:py-24">
-            <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)] lg:items-end">
+          <div className="absolute inset-0 bg-[linear-gradient(122deg,rgba(108,16,24,0.98)_0%,rgba(146,24,33,0.96)_44%,rgba(201,77,89,0.74)_74%,rgba(245,240,233,0.94)_100%)]" />
+          <div className="pointer-events-none absolute -left-10 top-12 h-52 w-52 rounded-full bg-white/10 blur-3xl motion-safe:animate-subtle-drift" />
+          <div className="pointer-events-none absolute -right-12 bottom-0 h-64 w-64 rounded-full bg-[#ffb3bb]/15 blur-3xl motion-safe:animate-subtle-drift" />
+
+          <div className="relative mx-auto max-w-7xl px-5 pb-10 pt-14 lg:px-8 lg:pb-14 lg:pt-24">
+            <div className="grid gap-10 lg:grid-cols-[minmax(0,1.18fr)_minmax(340px,0.82fr)] lg:items-end">
               <div className="max-w-3xl text-white">
-                <p className="text-sm font-semibold uppercase tracking-[0.34em] text-white/70">{hero.eyebrow}</p>
-                <h1 className="mt-5 max-w-4xl text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-[4.25rem]">
+                <p className="reveal is-visible text-sm font-semibold uppercase tracking-[0.34em] text-white/72">{hero.eyebrow}</p>
+                <h1 className="reveal reveal-delay-1 is-visible mt-5 max-w-4xl text-4xl font-semibold leading-[1.03] tracking-tight sm:text-5xl lg:text-[4.35rem]">
                   {hero.title}
                 </h1>
-                <p className="mt-6 max-w-2xl text-lg leading-8 text-white/82">{hero.intro}</p>
-                <p className="mt-5 max-w-2xl text-base leading-7 text-white/64">{hero.supporting}</p>
+                <p className="reveal reveal-delay-2 is-visible mt-6 max-w-2xl text-lg leading-8 text-white/84">{hero.intro}</p>
+                <p className="reveal reveal-delay-3 is-visible mt-5 max-w-2xl text-base leading-7 text-white/70">{hero.supporting}</p>
 
-                <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+                <div className="reveal reveal-delay-3 is-visible mt-8 flex flex-col gap-4 sm:flex-row">
                   <a
                     href="#contacto"
                     className="cta-glow rounded-full bg-white px-7 py-4 text-center text-base font-semibold text-[#8d1f27] shadow-soft transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#8d1f27]"
@@ -107,26 +109,30 @@ function App() {
                     href={CONTACT.selfService}
                     target="_blank"
                     rel="noreferrer"
-                    className="cta-glow rounded-full border border-white/20 bg-white/8 px-7 py-4 text-center text-base font-semibold text-white transition hover:bg-white/14 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#8d1f27]"
+                    className="cta-glow rounded-full border border-white/25 bg-white/10 px-7 py-4 text-center text-base font-semibold text-white transition hover:bg-white/16 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#8d1f27]"
                     onClick={handleCTA('hero_self_service_click', 'hero', 'gestion_de_cobranzas')}
                   >
                     Gestión de cobranzas
                   </a>
                 </div>
+
+                <p className="reveal reveal-delay-4 is-visible mt-7 text-xs font-semibold uppercase tracking-[0.22em] text-white/62">
+                  Estrategia • Negociación • Tecnología aplicada
+                </p>
               </div>
 
-              <div className="hero-visual rounded-[2rem] border border-white/12 bg-white/10 p-7 text-white shadow-soft backdrop-blur md:p-8">
-                <p className="text-xs font-semibold uppercase tracking-[0.32em] text-white/65">{hero.badge}</p>
+              <div className="hero-visual reveal reveal-delay-2 is-visible relative rounded-[2rem] border border-white/18 bg-white/12 p-7 text-white shadow-soft backdrop-blur md:p-8">
+                <p className="text-xs font-semibold uppercase tracking-[0.32em] text-white/72">{hero.badge}</p>
                 <div className="mt-8 grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-                  {hero.highlights.map((item, index) => (
-                    <div key={item.label} className={`hero-bar border-l border-white/18 pl-4 first:border-l-0 first:pl-0 sm:first:border-l sm:first:pl-4 lg:first:border-l-0 lg:first:pl-0 xl:first:border-l xl:first:pl-4 reveal reveal-delay-${Math.min(index + 1, 4)}`}>
+                  {hero.highlights.map((item) => (
+                    <div key={item.label} className="hero-bar rounded-xl border border-white/18 bg-white/[0.04] px-4 py-3">
                       <p className="text-3xl font-semibold tracking-tight">{item.value}</p>
-                      <p className="mt-2 text-sm uppercase tracking-[0.2em] text-white/62">{item.label}</p>
+                      <p className="mt-2 text-xs uppercase tracking-[0.2em] text-white/68">{item.label}</p>
                     </div>
                   ))}
                 </div>
-                <div className="mt-8 h-px bg-white/14" />
-                <p className="mt-8 text-base leading-7 text-white/76">{hero.note}</p>
+                <div className="mt-8 h-px bg-white/18" />
+                <p className="mt-7 text-base leading-7 text-white/78">{hero.note}</p>
               </div>
             </div>
           </div>
