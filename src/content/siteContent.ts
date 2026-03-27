@@ -110,14 +110,27 @@ export const about = {
   vision: 'Convertirnos en la empresa líder de recupero y gestión de mora en Argentina.',
 } as const
 
+const clientLogoModules = import.meta.glob('../assets/clients/*.png', {
+  eager: true,
+  import: 'default',
+}) as Record<string, string>
+
+const clientLogoEntries = Object.entries(clientLogoModules)
+  .map(([path, src]) => {
+    const match = path.match(/(\d+)\.png$/)
+    return match ? { order: Number(match[1]), src } : null
+  })
+  .filter((entry): entry is { order: number; src: string } => Boolean(entry))
+  .sort((a, b) => a.order - b.order)
+
 export const clients = {
   eyebrow: 'CLIENTES',
   title: 'Confianza construida con marcas líderes',
   description:
     'Recuperamos la presencia histórica de clientes de EPB con una grilla institucional, contemporánea y responsive, manteniendo el respaldo visual de las marcas que confiaron en nuestra gestión.',
-  logos: Array.from({ length: 29 }, (_, index) => ({
-    src: `/brand/clients/${index + 1}.png`,
-    alt: `Marca cliente EPB ${index + 1}`,
+  logos: clientLogoEntries.map(({ order, src }) => ({
+    src,
+    alt: `Marca cliente EPB ${order}`,
   })),
 } as const
 

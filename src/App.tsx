@@ -174,7 +174,7 @@ function App() {
             <div className="absolute -bottom-24 -left-24 h-[400px] w-[400px] rounded-full bg-epb-accent/[0.05] blur-3xl motion-safe:animate-subtle-drift [animation-delay:10s]" />
           </div>
 
-          <div className="relative mx-auto grid max-w-7xl gap-10 px-5 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-28">
+          <div className="relative mx-auto grid max-w-7xl gap-10 px-5 py-16 lg:grid-cols-[1fr_1.02fr] lg:items-center lg:px-8 lg:py-28 xl:gap-14">
             <div className="max-w-3xl">
               <div className="inline-flex items-center rounded-[1.5rem] border border-epb-brand/15 bg-white/85 px-4 py-3 shadow-soft backdrop-blur">
                 <img
@@ -224,19 +224,45 @@ function App() {
               </div>
             </div>
 
-            <div className="grid gap-4">
-              {hero.reasons.map((item, i) => {
-                const [title, text] = item.split(' — ')
-                return (
-                  <article
-                    key={item}
-                    className={`card-hover rounded-[1.75rem] border border-white/70 bg-white/80 p-6 shadow-soft backdrop-blur reveal reveal-delay-${i + 1}`}
-                  >
-                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-epb-brand">{title}</p>
-                    <p className="mt-3 text-xl font-semibold leading-8 text-epb-ink">{text}</p>
-                  </article>
-                )
-              })}
+            <div className="grid gap-4 lg:pl-4 xl:pl-8">
+              <div className="rounded-[2rem] border border-white/75 bg-white/88 p-5 shadow-lifted backdrop-blur sm:p-6">
+                <div className="grid gap-4 sm:grid-cols-[1.15fr_0.85fr] sm:items-stretch">
+                  <div className="rounded-[1.6rem] bg-epb-ink p-6 text-white shadow-soft">
+                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-epb-brandLight">Experiencia operativa</p>
+                    <p className="mt-4 text-3xl font-semibold tracking-tight sm:text-[2.2rem]">{hero.title}</p>
+                    <p className="mt-4 max-w-md text-base leading-7 text-slate-300">
+                      Gestión profesional de mora y recupero con estrategia, seguimiento y canales digitales preparados para acelerar contacto y resultado.
+                    </p>
+                  </div>
+                  <div className="grid gap-3">
+                    <article className="rounded-[1.5rem] border border-epb-brand/12 bg-[#fcfaf7] p-5 shadow-soft">
+                      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-epb-brand">Respuesta</p>
+                      <p className="mt-3 text-2xl font-semibold text-epb-ink">Canales directos</p>
+                      <p className="mt-2 text-sm leading-6 text-epb-slate">WhatsApp, autogestión y atención comercial en una misma entrada.</p>
+                    </article>
+                    <article className="rounded-[1.5rem] border border-epb-brand/12 bg-[#fff7f5] p-5 shadow-soft">
+                      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-epb-brand">Cobertura</p>
+                      <p className="mt-3 text-2xl font-semibold text-epb-ink">Bancos, empresas y PyMES</p>
+                      <p className="mt-2 text-sm leading-6 text-epb-slate">Estructura adaptable a carteras y contextos de distinta complejidad.</p>
+                    </article>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid gap-4 md:grid-cols-2">
+                {hero.reasons.map((item, i) => {
+                  const [title, text] = item.split(' — ')
+                  return (
+                    <article
+                      key={item}
+                      className={`card-hover rounded-[1.75rem] border border-white/70 bg-white/82 p-6 shadow-soft backdrop-blur reveal reveal-delay-${i + 1}`}
+                    >
+                      <p className="text-xs font-semibold uppercase tracking-[0.28em] text-epb-brand">{title}</p>
+                      <p className="mt-3 text-lg font-semibold leading-7 text-epb-ink sm:text-xl sm:leading-8">{text}</p>
+                    </article>
+                  )
+                })}
+              </div>
             </div>
           </div>
         </section>
@@ -375,7 +401,7 @@ function App() {
                       src={logo.src}
                       alt={logo.alt}
                       loading="lazy"
-                      className="max-h-12 w-full object-contain opacity-75 saturate-0 transition duration-300 group-hover:opacity-100 group-hover:saturate-100 sm:max-h-14"
+                      className="max-h-12 w-full object-contain opacity-95 transition duration-300 group-hover:scale-[1.02] sm:max-h-14"
                     />
                   </article>
                 ))}
