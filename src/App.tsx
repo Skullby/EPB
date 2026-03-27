@@ -3,6 +3,7 @@ import type { FormEvent } from 'react'
 import {
   CONTACT,
   about,
+  clients,
   csr,
   hero,
   press,
@@ -99,6 +100,7 @@ function App() {
   const servicesRef = useReveal<HTMLElement>()
   const toolsRef = useReveal<HTMLElement>()
   const aboutRef = useReveal<HTMLElement>()
+  const clientsRef = useReveal<HTMLDivElement>()
   const recognitionsRef = useReveal<HTMLDivElement>()
   const pressRef = useReveal<HTMLElement>()
   const contactRef = useReveal<HTMLElement>()
@@ -116,8 +118,12 @@ function App() {
       <header className="sticky top-0 z-50 border-b border-black/5 bg-[#f4f1ea]/95 backdrop-blur">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-5 lg:px-8">
           <a href="#inicio" className="min-w-0 flex items-center gap-3" aria-label="Ir al inicio">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-epb-brand text-sm font-bold tracking-[0.3em] text-white">
-              EPB
+            <div className="flex shrink-0 items-center justify-center rounded-[1.35rem] border border-epb-brand/10 bg-white px-3 py-2 shadow-soft">
+              <img
+                src="/brand/epb-logo-original.png"
+                alt="EPB Estudio Palmero de Belizán"
+                className="h-8 w-auto sm:h-9"
+              />
             </div>
             <div className="min-w-0">
               <p className="truncate text-[11px] font-semibold uppercase tracking-[0.24em] text-epb-brand sm:text-xs sm:tracking-[0.3em]">Estudio Palmero</p>
@@ -129,6 +135,7 @@ function App() {
             <a href="#servicios" className="transition hover:text-epb-brand">Servicios</a>
             <a href="#herramientas" className="transition hover:text-epb-brand">Herramientas</a>
             <a href="#nosotros" className="transition hover:text-epb-brand">Nosotros</a>
+            <a href="#clientes" className="transition hover:text-epb-brand">Clientes</a>
             <a href="#novedades" className="transition hover:text-epb-brand">Novedades</a>
             <a href="#contacto" className="transition hover:text-epb-brand">Contacto</a>
           </nav>
@@ -148,6 +155,7 @@ function App() {
             <a href="#servicios" className="whitespace-nowrap rounded-full border border-epb-line bg-white px-3 py-2 transition hover:border-epb-brand hover:text-epb-brand">Servicios</a>
             <a href="#herramientas" className="whitespace-nowrap rounded-full border border-epb-line bg-white px-3 py-2 transition hover:border-epb-brand hover:text-epb-brand">Herramientas</a>
             <a href="#nosotros" className="whitespace-nowrap rounded-full border border-epb-line bg-white px-3 py-2 transition hover:border-epb-brand hover:text-epb-brand">Nosotros</a>
+            <a href="#clientes" className="whitespace-nowrap rounded-full border border-epb-line bg-white px-3 py-2 transition hover:border-epb-brand hover:text-epb-brand">Clientes</a>
             <a href="#novedades" className="whitespace-nowrap rounded-full border border-epb-line bg-white px-3 py-2 transition hover:border-epb-brand hover:text-epb-brand">Novedades</a>
             <a href="#contacto" className="whitespace-nowrap rounded-full border border-epb-line bg-white px-3 py-2 transition hover:border-epb-brand hover:text-epb-brand">Contacto</a>
           </nav>
@@ -168,7 +176,14 @@ function App() {
 
           <div className="relative mx-auto grid max-w-7xl gap-10 px-5 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-28">
             <div className="max-w-3xl">
-              <p className="inline-flex rounded-full border border-epb-brand/20 bg-white/80 px-4 py-1.5 text-sm font-semibold text-epb-brand shadow-soft">
+              <div className="inline-flex items-center rounded-[1.5rem] border border-epb-brand/15 bg-white/85 px-4 py-3 shadow-soft backdrop-blur">
+                <img
+                  src="/brand/epb-logo-original.png"
+                  alt="EPB Estudio Palmero de Belizán"
+                  className="h-10 w-auto sm:h-12"
+                />
+              </div>
+              <p className="mt-5 inline-flex rounded-full border border-epb-brand/20 bg-white/80 px-4 py-1.5 text-sm font-semibold text-epb-brand shadow-soft">
                 {hero.badge}
               </p>
               <h1 className="mt-6 text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
@@ -330,6 +345,40 @@ function App() {
               <div className="rounded-[2rem] bg-[#fcfaf6] p-8 shadow-soft ring-1 ring-black/5 lg:p-10">
                 <h3 className="text-sm font-semibold uppercase tracking-[0.3em] text-epb-brand">VISIÓN</h3>
                 <p className="mt-4 text-lg leading-8 text-epb-slate">{about.vision}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Clientes */}
+          <div id="clientes" ref={clientsRef} className="reveal mt-14">
+            <SectionHeader eyebrow={clients.eyebrow} title={clients.title} description={clients.description} />
+            <div className="overflow-hidden rounded-[2rem] border border-epb-line bg-gradient-to-br from-white via-[#fcfaf6] to-[#f6efe7] p-6 shadow-soft sm:p-8 lg:p-10">
+              <div className="flex flex-col gap-4 border-b border-black/5 pb-6 sm:flex-row sm:items-end sm:justify-between">
+                <div className="max-w-2xl">
+                  <p className="text-sm font-semibold uppercase tracking-[0.3em] text-epb-brand">Relaciones institucionales</p>
+                  <p className="mt-3 text-base leading-7 text-epb-slate sm:text-lg">
+                    Una selección de marcas históricas presentes en el ecosistema comercial de EPB, reintroducidas con una presentación contemporánea y sobria.
+                  </p>
+                </div>
+                <div className="rounded-full border border-epb-brand/15 bg-white px-4 py-2 text-sm font-semibold text-epb-ink shadow-sm">
+                  +{clients.logos.length} marcas integradas
+                </div>
+              </div>
+
+              <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                {clients.logos.map((logo, index) => (
+                  <article
+                    key={logo.src}
+                    className={`group flex min-h-[108px] items-center justify-center rounded-[1.4rem] border border-white/80 bg-white/90 p-4 shadow-[0_12px_30px_rgba(15,23,42,0.06)] transition hover:-translate-y-1 hover:border-epb-brand/20 hover:shadow-[0_18px_40px_rgba(15,23,42,0.10)] reveal reveal-delay-${(index % 4) + 1}`}
+                  >
+                    <img
+                      src={logo.src}
+                      alt={logo.alt}
+                      loading="lazy"
+                      className="max-h-12 w-full object-contain opacity-75 saturate-0 transition duration-300 group-hover:opacity-100 group-hover:saturate-100 sm:max-h-14"
+                    />
+                  </article>
+                ))}
               </div>
             </div>
           </div>

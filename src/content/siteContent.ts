@@ -110,6 +110,17 @@ export const about = {
   vision: 'Convertirnos en la empresa líder de recupero y gestión de mora en Argentina.',
 } as const
 
+export const clients = {
+  eyebrow: 'CLIENTES',
+  title: 'Confianza construida con marcas líderes',
+  description:
+    'Recuperamos la presencia histórica de clientes de EPB con una grilla institucional, contemporánea y responsive, manteniendo el respaldo visual de las marcas que confiaron en nuestra gestión.',
+  logos: Array.from({ length: 29 }, (_, index) => ({
+    src: `/brand/clients/${index + 1}.png`,
+    alt: `Marca cliente EPB ${index + 1}`,
+  })),
+} as const
+
 export const recognitions = [
   {
     client: 'BANCO GALICIA',
