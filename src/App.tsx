@@ -65,7 +65,7 @@ function App() {
             href={CONTACT.whatsapp}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full bg-epb-ink px-4 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-epb-brand focus-visible:ring-offset-2"
+            className="cta-glow rounded-full bg-epb-ink px-4 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-epb-brand focus-visible:ring-offset-2"
             onClick={handleCTA('header_contact_click', 'header', 'contacto')}
           >
             Contacto
@@ -98,7 +98,7 @@ function App() {
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                   <a
                     href="#contacto"
-                    className="rounded-full bg-white px-7 py-4 text-center text-base font-semibold text-[#8d1f27] shadow-soft transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#8d1f27]"
+                    className="cta-glow rounded-full bg-white px-7 py-4 text-center text-base font-semibold text-[#8d1f27] shadow-soft transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#8d1f27]"
                     onClick={handleCTA('hero_contact_click', 'hero', 'quiero_comunicarme')}
                   >
                     Quiero comunicarme
@@ -107,7 +107,7 @@ function App() {
                     href={CONTACT.selfService}
                     target="_blank"
                     rel="noreferrer"
-                    className="rounded-full border border-white/20 bg-white/8 px-7 py-4 text-center text-base font-semibold text-white transition hover:bg-white/14 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#8d1f27]"
+                    className="cta-glow rounded-full border border-white/20 bg-white/8 px-7 py-4 text-center text-base font-semibold text-white transition hover:bg-white/14 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#8d1f27]"
                     onClick={handleCTA('hero_self_service_click', 'hero', 'gestion_de_cobranzas')}
                   >
                     Gestión de cobranzas
@@ -115,11 +115,11 @@ function App() {
                 </div>
               </div>
 
-              <div className="rounded-[2rem] border border-white/12 bg-white/10 p-7 text-white shadow-soft backdrop-blur md:p-8">
+              <div className="hero-visual rounded-[2rem] border border-white/12 bg-white/10 p-7 text-white shadow-soft backdrop-blur md:p-8">
                 <p className="text-xs font-semibold uppercase tracking-[0.32em] text-white/65">{hero.badge}</p>
                 <div className="mt-8 grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-                  {hero.highlights.map((item) => (
-                    <div key={item.label} className="border-l border-white/18 pl-4 first:border-l-0 first:pl-0 sm:first:border-l sm:first:pl-4 lg:first:border-l-0 lg:first:pl-0 xl:first:border-l xl:first:pl-4">
+                  {hero.highlights.map((item, index) => (
+                    <div key={item.label} className={`hero-bar border-l border-white/18 pl-4 first:border-l-0 first:pl-0 sm:first:border-l sm:first:pl-4 lg:first:border-l-0 lg:first:pl-0 xl:first:border-l xl:first:pl-4 reveal reveal-delay-${Math.min(index + 1, 4)}`}>
                       <p className="text-3xl font-semibold tracking-tight">{item.value}</p>
                       <p className="mt-2 text-sm uppercase tracking-[0.2em] text-white/62">{item.label}</p>
                     </div>
@@ -134,7 +134,7 @@ function App() {
 
         <section aria-label="Clientes" className="border-b border-black/5 bg-white">
           <div className="mx-auto max-w-7xl px-5 py-10 lg:px-8 lg:py-14">
-            <div className="rounded-[2rem] border border-[#ead6d8] bg-[linear-gradient(180deg,#fff_0%,#fdf8f8_100%)] p-6 shadow-soft lg:p-8">
+            <div className="reveal is-visible rounded-[2rem] border border-[#ead6d8] bg-[linear-gradient(180deg,#fff_0%,#fdf8f8_100%)] p-6 shadow-soft lg:p-8">
               <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
                 <div className="max-w-xl">
                   <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#8d1f27]">{clientLogos.eyebrow}</p>
@@ -164,7 +164,7 @@ function App() {
                     {clientLogos.items.map((item) => (
                       <div
                         key={item}
-                        className="flex min-h-[84px] items-center justify-center rounded-[1.15rem] border border-[#e9d8d9] bg-white px-4 text-center text-sm font-semibold uppercase tracking-[0.16em] text-[#7b1d24] shadow-sm"
+                        className="card-hover flex min-h-[84px] items-center justify-center rounded-[1.15rem] border border-[#e9d8d9] bg-white px-4 text-center text-sm font-semibold uppercase tracking-[0.16em] text-[#7b1d24] shadow-sm"
                       >
                         {item}
                       </div>
@@ -182,7 +182,7 @@ function App() {
         <section id="servicios" className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
           <SectionHeader eyebrow={services.eyebrow} title={services.title} description="Presentamos los servicios clave con una estructura más clara, priorizando lectura, jerarquía visual y comprensión rápida." />
           <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-            <article className="rounded-[2rem] bg-epb-ink p-8 text-white shadow-soft lg:p-10">
+            <article className="reveal is-visible card-hover rounded-[2rem] bg-epb-ink p-8 text-white shadow-soft lg:p-10">
               <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-200">{services.main.title}</p>
               <h3 className="mt-4 text-3xl font-semibold tracking-tight">{services.main.description}</h3>
               <p className="mt-8 text-sm font-semibold uppercase tracking-[0.3em] text-emerald-200">¿Cómo lo hacemos?</p>
@@ -193,7 +193,7 @@ function App() {
               </ul>
             </article>
 
-            <aside className="rounded-[2rem] border border-epb-line bg-white p-8 shadow-soft lg:p-10">
+            <aside className="reveal reveal-delay-1 is-visible card-hover rounded-[2rem] border border-epb-line bg-white p-8 shadow-soft lg:p-10">
               <p className="text-sm font-semibold uppercase tracking-[0.3em] text-epb-brand">Marca complementaria</p>
               <p className="mt-4 text-lg leading-8 text-epb-slate">{services.main.note}</p>
               <a
