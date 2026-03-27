@@ -10,10 +10,24 @@ export const CONTACT = {
 } as const
 
 export const hero = {
-  badge: 'Gestión institucional de mora y recupero de activos',
-  title: 'Presencia, estrategia y resultados para cada cartera',
+  badge: 'OFRECEMOS SOLUCIONES ADECUADAS PARA CADA UNO DE NUESTROS CLIENTES.',
+  eyebrow: 'Estudio Palmero de Belizán & Asociados',
+  title: 'Gestión de mora y recupero de activos con foco institucional.',
   intro:
-    'EPB desarrolla soluciones de cobranza para bancos, empresas y PyMES con una operación ágil, transparente y respaldada por tecnología propia.',
+    'Acompañamos a bancos, empresas y PyMES con estrategias claras, operación profesional y metodologías adaptadas a cada cartera para lograr una gestión ágil, eficaz y transparente.',
+  supporting: 'Más de 25 años de trayectoria, equipos especializados y tecnología aplicada para sostener resultados con criterio comercial y profesional.',
+  highlights: [
+    { value: '+25 años', label: 'de trayectoria' },
+    { value: '+200', label: 'integrantes' },
+    { value: '+50', label: 'clientes' },
+  ],
+  note: 'Servicio de cobranza, canales de última generación y metodologías operativas alineadas a la necesidad de cada cliente.',
+} as const
+
+export const clientLogos = {
+  eyebrow: 'CLIENTES',
+  title: 'Compañías que confían en EPB&A',
+  items: ['BANCO GALICIA', 'BANCO HIPOTECARIO', 'BANCO SANTANDER', 'EMPRESAS', 'PyMES', 'MERCADO COMERCIAL'],
 } as const
 
 export const services = {
@@ -25,10 +39,10 @@ export const services = {
     steps: [
       '1. Negociación customizada por profesionales de Economía, Legales y Relaciones Públicas.',
       '2. Gestión de terreno: visitador domiciliario',
-      '3. Encuadres objetivo y subjetivo: situación patrimonial y crediticia, visión de expertos en la cobranza',
+      '3. Encuadres objetivo y subjetivo: situación patrimonial y crediticia, con visión de expertos en cobranza',
     ],
     note:
-      'AgenciaPalmero es nuestra nueva marca de los servicios de recupero de mora y gestión de cobranzas de mora temprana y tardía.',
+      'AgenciaPalmero es nuestra nueva marca para los servicios de recupero de mora y gestión de cobranzas temprana y tardía.',
     noteHref: 'https://agenciapalmero.com.ar',
   },
 } as const
@@ -54,7 +68,7 @@ export const tools = {
       bullets: [
         'IVR Inteligente: Verifica la identidad del interlocutor y su intención de pago.',
         'Campañas de MAILING: con beneficios de pago inmediato, recordatorios de pago con diferentes textos acordes a la instancia de mora.',
-        'Campañas de SMS: Incluye un link para dirigirse a la plataforma de autogestión con la posibilidad de enviar invitación para conversar por WhatsApp, recordatorios de pago, etc.',
+        'Campañas de SMS: incluye un link para dirigirse a la plataforma de autogestión con la posibilidad de enviar invitaciones para conversar por WhatsApp, recordatorios de pago, etc.',
       ],
     },
     {
@@ -71,7 +85,7 @@ export const tools = {
 } as const
 
 export const technology = {
-  title: 'TECNOLOGÍA E INNOVACIÓN CONSTANTE',
+  title: 'TECNOLOGÍA INNOVACIÓN CONSTANTE',
   items: [
     'SERVERS EN DATA CENTER',
     'ALTA DISPONIBILIDAD',
@@ -102,30 +116,6 @@ export const about = {
     'Liderar el mercado de cobranzas, brindando un servicio ágil y eficiente de recupero que garantice el cumplimiento eficaz de los objetivos de nuestros clientes, en el marco de un ambiente sustentable y de calidad.',
   values: ['Superación', 'Innovación', 'Transparencia', 'Talento', 'Resultados'],
   vision: 'Convertirnos en la empresa líder de recupero y gestión de mora en Argentina.',
-} as const
-
-const clientLogoModules = import.meta.glob('../assets/clients/*.png', {
-  eager: true,
-  import: 'default',
-}) as Record<string, string>
-
-const clientLogoEntries = Object.entries(clientLogoModules)
-  .map(([path, src]) => {
-    const match = path.match(/(\d+)\.png$/)
-    return match ? { order: Number(match[1]), src } : null
-  })
-  .filter((entry): entry is { order: number; src: string } => Boolean(entry))
-  .sort((a, b) => a.order - b.order)
-
-export const clients = {
-  eyebrow: 'CLIENTES',
-  title: 'Confianza construida con marcas líderes',
-  description:
-    'Recuperamos la presencia histórica de clientes de EPB con una grilla institucional, contemporánea y responsive, manteniendo el respaldo visual de las marcas que confiaron en nuestra gestión.',
-  logos: clientLogoEntries.map(({ order, src }) => ({
-    src,
-    alt: `Marca cliente EPB ${order}`,
-  })),
 } as const
 
 export const recognitions = [
