@@ -174,8 +174,8 @@ function App() {
             <div className="absolute -bottom-24 -left-24 h-[400px] w-[400px] rounded-full bg-epb-accent/[0.05] blur-3xl motion-safe:animate-subtle-drift [animation-delay:10s]" />
           </div>
 
-          <div className="relative mx-auto grid max-w-7xl gap-10 px-5 py-16 lg:grid-cols-[1fr_1.02fr] lg:items-center lg:px-8 lg:py-28 xl:gap-14">
-            <div className="max-w-3xl">
+          <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-16 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:px-8 lg:py-28 xl:gap-16">
+            <div className="max-w-2xl">
               <div className="inline-flex items-center rounded-[1.5rem] border border-epb-brand/15 bg-white/85 px-4 py-3 shadow-soft backdrop-blur">
                 <img
                   src="/brand/epb-logo-original.png"
@@ -186,10 +186,10 @@ function App() {
               <p className="mt-5 inline-flex rounded-full border border-epb-brand/20 bg-white/80 px-4 py-1.5 text-sm font-semibold text-epb-brand shadow-soft">
                 {hero.badge}
               </p>
-              <h1 className="mt-6 text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+              <h1 className="mt-6 max-w-3xl text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-[4.15rem]">
                 {hero.title}
               </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-epb-slate">{hero.intro}</p>
+              <p className="mt-6 max-w-xl text-lg leading-8 text-epb-slate">{hero.intro}</p>
 
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                 <a
@@ -208,60 +208,50 @@ function App() {
                 </a>
               </div>
 
-              <div className="mt-8 grid gap-3 sm:grid-cols-3">
-                <div className="rounded-[1.25rem] border border-epb-brand/10 bg-white/70 px-4 py-4 shadow-soft">
-                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-epb-brand">Trayectoria</p>
-                  <p className="mt-2 text-lg font-semibold text-epb-ink">Desde 1996</p>
-                </div>
-                <div className="rounded-[1.25rem] border border-epb-brand/10 bg-white/70 px-4 py-4 shadow-soft">
-                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-epb-brand">Cobertura</p>
-                  <p className="mt-2 text-lg font-semibold text-epb-ink">Bancos, empresas y PyMES</p>
-                </div>
-                <div className="rounded-[1.25rem] border border-epb-brand/10 bg-white/70 px-4 py-4 shadow-soft">
-                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-epb-brand">Canal directo</p>
-                  <p className="mt-2 text-lg font-semibold text-epb-ink">WhatsApp + autogestión</p>
-                </div>
+              <div className="mt-8 flex flex-wrap gap-3 text-sm font-semibold text-epb-ink">
+                <div className="rounded-full border border-epb-brand/12 bg-white/72 px-4 py-2 shadow-soft">Desde 1996</div>
+                <div className="rounded-full border border-epb-brand/12 bg-white/72 px-4 py-2 shadow-soft">Bancos, empresas y PyMES</div>
+                <div className="rounded-full border border-epb-brand/12 bg-white/72 px-4 py-2 shadow-soft">Atención comercial + autogestión</div>
               </div>
             </div>
 
-            <div className="grid gap-4 lg:pl-4 xl:pl-8">
-              <div className="rounded-[2rem] border border-white/75 bg-white/88 p-5 shadow-lifted backdrop-blur sm:p-6">
-                <div className="grid gap-4 sm:grid-cols-[1.15fr_0.85fr] sm:items-stretch">
-                  <div className="rounded-[1.6rem] bg-epb-ink p-6 text-white shadow-soft">
-                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-epb-brandLight">Experiencia operativa</p>
-                    <p className="mt-4 text-3xl font-semibold tracking-tight sm:text-[2.2rem]">{hero.title}</p>
-                    <p className="mt-4 max-w-md text-base leading-7 text-slate-300">
-                      Gestión profesional de mora y recupero con estrategia, seguimiento y canales digitales preparados para acelerar contacto y resultado.
+            <div className="relative lg:pl-4 xl:pl-8">
+              <div className="absolute inset-x-10 top-10 h-32 rounded-full bg-epb-brand/10 blur-3xl" aria-hidden="true" />
+              <div className="hero-visual relative overflow-hidden rounded-[2.4rem] border border-white/75 bg-[linear-gradient(135deg,rgba(255,255,255,0.92),rgba(255,248,246,0.96),rgba(255,255,255,0.9))] p-6 shadow-lifted backdrop-blur sm:p-8 lg:p-10">
+                <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+                  <div className="absolute inset-y-0 right-[14%] w-px bg-gradient-to-b from-transparent via-epb-brand/15 to-transparent" />
+                  <div className="absolute inset-y-0 right-[34%] w-px bg-gradient-to-b from-transparent via-epb-brand/10 to-transparent" />
+                  <div className="absolute inset-x-0 top-[22%] h-px bg-gradient-to-r from-transparent via-epb-brand/12 to-transparent" />
+                  <div className="absolute inset-x-0 top-[58%] h-px bg-gradient-to-r from-transparent via-epb-brand/10 to-transparent" />
+                  <div className="absolute right-[-12%] top-[-14%] h-48 w-48 rounded-full border border-epb-brand/10" />
+                </div>
+
+                <div className="relative z-10 grid gap-6 lg:grid-cols-[0.72fr_0.28fr] lg:items-end">
+                  <div className="overflow-hidden rounded-[2rem] bg-epb-ink px-6 py-7 text-white shadow-soft sm:px-8 sm:py-8">
+                    <p className="text-xs font-semibold uppercase tracking-[0.3em] text-epb-brandLight">Operación institucional</p>
+                    <p className="mt-4 max-w-md text-3xl font-semibold tracking-tight sm:text-[2.5rem]">
+                      Gestión profesional con estructura, seguimiento y canales activos.
                     </p>
+                    <div className="mt-8 flex items-end gap-3" aria-hidden="true">
+                      <span className="hero-bar h-24 w-4 rounded-full bg-white/18 [animation-delay:0s]" />
+                      <span className="hero-bar h-36 w-4 rounded-full bg-white/28 [animation-delay:0.8s]" />
+                      <span className="hero-bar h-28 w-4 rounded-full bg-epb-brand [animation-delay:1.4s]" />
+                      <span className="hero-bar h-44 w-4 rounded-full bg-white [animation-delay:0.4s]" />
+                      <span className="hero-bar h-32 w-4 rounded-full bg-epb-brand/70 [animation-delay:1.1s]" />
+                    </div>
                   </div>
-                  <div className="grid gap-3">
-                    <article className="rounded-[1.5rem] border border-epb-brand/12 bg-[#fcfaf7] p-5 shadow-soft">
-                      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-epb-brand">Respuesta</p>
-                      <p className="mt-3 text-2xl font-semibold text-epb-ink">Canales directos</p>
-                      <p className="mt-2 text-sm leading-6 text-epb-slate">WhatsApp, autogestión y atención comercial en una misma entrada.</p>
+
+                  <div className="grid gap-4">
+                    <article className="rounded-[1.6rem] border border-epb-brand/12 bg-white/88 p-5 shadow-soft">
+                      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-epb-brand">Presencia</p>
+                      <p className="mt-3 text-xl font-semibold text-epb-ink">Marca institucional, contacto directo y operación continua.</p>
                     </article>
-                    <article className="rounded-[1.5rem] border border-epb-brand/12 bg-[#fff7f5] p-5 shadow-soft">
+                    <article className="rounded-[1.6rem] border border-epb-brand/12 bg-[#fff4f1] p-5 shadow-soft">
                       <p className="text-xs font-semibold uppercase tracking-[0.24em] text-epb-brand">Cobertura</p>
-                      <p className="mt-3 text-2xl font-semibold text-epb-ink">Bancos, empresas y PyMES</p>
-                      <p className="mt-2 text-sm leading-6 text-epb-slate">Estructura adaptable a carteras y contextos de distinta complejidad.</p>
+                      <p className="mt-3 text-xl font-semibold text-epb-ink">Soluciones para carteras comerciales, bancarias y PyME.</p>
                     </article>
                   </div>
                 </div>
-              </div>
-
-              <div className="grid gap-4 md:grid-cols-2">
-                {hero.reasons.map((item, i) => {
-                  const [title, text] = item.split(' — ')
-                  return (
-                    <article
-                      key={item}
-                      className={`card-hover rounded-[1.75rem] border border-white/70 bg-white/82 p-6 shadow-soft backdrop-blur reveal reveal-delay-${i + 1}`}
-                    >
-                      <p className="text-xs font-semibold uppercase tracking-[0.28em] text-epb-brand">{title}</p>
-                      <p className="mt-3 text-lg font-semibold leading-7 text-epb-ink sm:text-xl sm:leading-8">{text}</p>
-                    </article>
-                  )
-                })}
               </div>
             </div>
           </div>

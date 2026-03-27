@@ -10,16 +10,10 @@ export const CONTACT = {
 } as const
 
 export const hero = {
-  badge: 'OFRECEMOS SOLUCIONES ADECUADAS PARA CADA UNO DE NUESTROS CLIENTES.',
-  title: 'Ágil, eficaz y transparente',
+  badge: 'Gestión institucional de mora y recupero de activos',
+  title: 'Presencia, estrategia y resultados para cada cartera',
   intro:
-    'Estudio Palmero de Belizán & Asociados desarrolla gestión de mora y recupero de activos para el mercado comercial y bancario, con estrategias claras, canales de última generación y metodologías operativas adaptadas a la necesidad del Cliente.',
-  reasons: [
-    'SERVICIO DE COBRANZA — Ágil, eficaz y transparente',
-    'ESTRATEGIAS — Claras y definidas',
-    'CANALES — De última generación',
-    'METODOLOGÍAS OPERATIVAS — Adaptadas a la necesidad del Cliente',
-  ],
+    'EPB desarrolla soluciones de cobranza para bancos, empresas y PyMES con una operación ágil, transparente y respaldada por tecnología propia.',
 } as const
 
 export const services = {
