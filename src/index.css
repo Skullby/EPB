@@ -17,7 +17,7 @@ a {
 
 a:focus-visible,
 button:focus-visible {
-  outline: 3px solid #0f766e;
+  outline: 3px solid #b91c1c;
   outline-offset: 3px;
 }
 
@@ -29,29 +29,57 @@ button:focus-visible {
   @apply min-h-screen;
 }
 
+/* Scroll-reveal: elements start hidden, animate in when .is-visible is added */
 @media (prefers-reduced-motion: no-preference) {
-  .animate-fade-up {
+  .reveal {
     opacity: 0;
-    transform: translateY(18px);
-    animation: fadeUp 0.7s ease-out forwards;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease-out, transform 0.65s ease-out;
   }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-fade-up {
+  .reveal {
     opacity: 1;
     transform: none;
   }
 }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
+/* Card hover lift — opt-in via class */
+@media (prefers-reduced-motion: no-preference) {
+  .card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 48px rgba(15, 23, 42, 0.12);
+  }
+}
 
-  to {
+/* Subtle CTA pulse for primary buttons */
+@media (prefers-reduced-motion: no-preference) {
+  .cta-glow {
+    position: relative;
+  }
+  .cta-glow::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: rgba(185, 28, 28, 0.15);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+  .cta-glow:hover::after {
     opacity: 1;
-    transform: translateY(0);
   }
 }
