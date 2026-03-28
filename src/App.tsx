@@ -37,13 +37,19 @@ function App() {
   const [visibleHeroRightWords, setVisibleHeroRightWords] = useState(1)
 
   useEffect(() => {
-    if (visibleHeroRightWords >= heroRightCopyWords.length) return
+    if (visibleHeroRightWords < heroRightCopyWords.length) {
+      const timer = window.setTimeout(() => {
+        setVisibleHeroRightWords((current) => Math.min(current + 1, heroRightCopyWords.length))
+      }, 180)
 
-    const timer = window.setTimeout(() => {
-      setVisibleHeroRightWords((current) => Math.min(current + 1, heroRightCopyWords.length))
-    }, 100)
+      return () => window.clearTimeout(timer)
+    }
 
-    return () => window.clearTimeout(timer)
+    const holdTimer = window.setTimeout(() => {
+      setVisibleHeroRightWords(1)
+    }, 4800)
+
+    return () => window.clearTimeout(holdTimer)
   }, [visibleHeroRightWords, heroRightCopyWords.length])
 
   useEffect(() => {

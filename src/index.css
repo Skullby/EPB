@@ -154,6 +154,30 @@ button:focus-visible {
   animation-duration: 0.18s;
 }
 
+.type-word-sm:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.type-word-sm:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.type-word-sm:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+.type-word-sm:nth-child(4) {
+  animation-delay: 0.24s;
+}
+
+.type-word-sm:nth-child(5) {
+  animation-delay: 0.32s;
+}
+
+.type-word-sm:nth-child(6) {
+  animation-delay: 0.4s;
+}
+
 .type-cursor {
   display: inline-block;
   margin-left: 0.08em;
