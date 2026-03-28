@@ -180,7 +180,8 @@ function App() {
               </div>
 
               <div className="hero-visual reveal reveal-delay-2 relative rounded-[2rem] border border-white/18 bg-white/12 p-7 text-white shadow-soft backdrop-blur md:p-8">
-                <div className="min-h-[96px] text-xs font-semibold uppercase tracking-[0.32em] text-white/72">
+                <div className="hero-panel-sheen pointer-events-none absolute inset-x-0 top-0 h-24 rounded-t-[2rem] bg-[linear-gradient(180deg,rgba(255,255,255,0.18),transparent)]" />
+                <div key={visibleHeroLine} className="hero-panel-copy min-h-[96px] text-xs font-semibold uppercase tracking-[0.32em] text-white/72">
                   <span className="sr-only">{heroPanelLines[visibleHeroLine]}</span>
                   <span aria-hidden="true" className="inline-flex flex-wrap items-center gap-x-[0.22em] gap-y-1 leading-6">
                     {heroLineWords.slice(0, visibleHeroLineWords).map((word, index) => (

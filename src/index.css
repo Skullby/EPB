@@ -89,9 +89,17 @@ button:focus-visible {
     inset: 12% -12% auto 24%;
     height: 220px;
     border-radius: 9999px;
-    background: radial-gradient(circle, rgba(185, 28, 28, 0.14), transparent 70%);
-    animation: heroPulse 10s ease-in-out infinite;
+    background: radial-gradient(circle, rgba(185, 28, 28, 0.18), transparent 70%);
+    animation: heroPulse 8s ease-in-out infinite;
     pointer-events: none;
+  }
+
+  .hero-panel-copy {
+    animation: heroPanelPop 0.4s ease-out;
+  }
+
+  .hero-panel-sheen {
+    animation: heroSheen 7.5s ease-in-out infinite;
   }
 
   .hero-bar {
@@ -219,5 +227,28 @@ button:focus-visible {
   51%,
   100% {
     opacity: 0;
+  }
+}
+
+@keyframes heroPanelPop {
+  from {
+    opacity: 0.4;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroSheen {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: translateX(-6%);
+  }
+  50% {
+    opacity: 0.85;
+    transform: translateX(4%);
   }
 }
