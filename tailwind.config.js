@@ -9,6 +9,8 @@ export default {
           slate: '#475569',
           line: '#dbe4f0',
           soft: '#f8fafc',
+          cream: '#f4f1ea',
+          warm: '#fcfaf6',
           brand: '#b91c1c',
           brandDark: '#991b1b',
           brandLight: '#fca5a5',
@@ -16,7 +18,13 @@ export default {
           accent: '#dc2626',
         },
       },
+      borderRadius: {
+        panel: '2rem',
+        card: '1.75rem',
+        inner: '1.25rem',
+      },
       boxShadow: {
+        card: '0 12px 24px rgba(15, 23, 42, 0.05)',
         soft: '0 20px 40px rgba(15, 23, 42, 0.08)',
         lifted: '0 24px 48px rgba(15, 23, 42, 0.12)',
       },
@@ -25,7 +33,7 @@ export default {
       },
       keyframes: {
         'fade-up': {
-          from: { opacity: '0', transform: 'translateY(24px)' },
+          from: { opacity: '0', transform: 'translateY(20px)' },
           to: { opacity: '1', transform: 'translateY(0)' },
         },
         'fade-in': {
@@ -33,14 +41,14 @@ export default {
           to: { opacity: '1' },
         },
         'subtle-drift': {
-          '0%, 100%': { transform: 'translate(0, 0)' },
-          '50%': { transform: 'translate(12px, -8px)' },
+          '0%, 100%': { transform: 'translate3d(0, 0, 0) scale(1)' },
+          '50%': { transform: 'translate3d(18px, -14px, 0) scale(1.08)' },
         },
       },
       animation: {
-        'fade-up': 'fade-up 0.6s ease-out both',
+        'fade-up': 'fade-up 0.55s ease-out both',
         'fade-in': 'fade-in 0.5s ease-out both',
-        'subtle-drift': 'subtle-drift 20s ease-in-out infinite',
+        'subtle-drift': 'subtle-drift 16s ease-in-out infinite',
       },
     },
   },
