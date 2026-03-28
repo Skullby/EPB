@@ -1,20 +1,8 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { CONTACT, hero } from '../../content/siteContent'
-import { useTypewriter } from '../../lib/useTypewriter'
 import { CTAButton } from '../ui/CTAButton'
 
 export function HeroSection() {
-  const lines = useMemo(
-    () => [
-      hero.badge,
-      'Más de 25 años de trayectoria institucional',
-      'Soluciones adecuadas para cada uno de nuestros clientes',
-    ],
-    []
-  )
-
-  const { words, visibleCount, currentLine } = useTypewriter(lines)
-
   // Cycling highlight for stat boxes: lights up one at a time, then all off briefly
   const [activeStatIdx, setActiveStatIdx] = useState(-1)
   useEffect(() => {
@@ -73,7 +61,6 @@ export function HeroSection() {
               {hero.title}
             </h1>
             <p className="reveal reveal-delay-2 mt-6 max-w-2xl text-lg leading-8 text-white/84">{hero.intro}</p>
-            <p className="reveal reveal-delay-3 mt-5 max-w-2xl text-base leading-7 text-white/70">{hero.supporting}</p>
 
             <div className="reveal reveal-delay-3 mt-8 flex flex-col gap-4 sm:flex-row">
               <CTAButton
@@ -106,16 +93,7 @@ export function HeroSection() {
 
           {/* Trust panel — de-emphasized, glass morphism */}
           <div className="reveal reveal-delay-2 relative rounded-panel border border-white/10 bg-white/[0.06] p-7 text-white shadow-card backdrop-blur-sm md:p-8">
-            <div className="min-h-[96px] text-xs font-semibold uppercase tracking-[0.32em] text-white/60">
-              <span className="sr-only">{currentLine}</span>
-              <span aria-hidden="true" className="inline-flex flex-wrap items-center gap-x-[0.22em] gap-y-1 leading-6">
-                {words.slice(0, visibleCount).map((word, i) => (
-                  <span key={word + i} className="type-word">{word}</span>
-                ))}
-                <span className="type-cursor" aria-hidden="true">|</span>
-              </span>
-            </div>
-            <div className="mt-8 grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
               {hero.highlights.map((item, idx) => (
                 <div
                   key={item.label}
