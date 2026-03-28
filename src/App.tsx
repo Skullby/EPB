@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import type { MouseEvent } from 'react'
 import {
   CONTACT,
@@ -33,6 +33,19 @@ const handleCTA = (eventName: string, section: string, label?: string) => (event
 }
 
 function App() {
+  const heroTypingWords = useMemo(() => hero.title.split(' '), [])
+  const [visibleHeroWords, setVisibleHeroWords] = useState(1)
+
+  useEffect(() => {
+    if (visibleHeroWords >= heroTypingWords.length) return
+
+    const timer = window.setTimeout(() => {
+      setVisibleHeroWords((current) => Math.min(current + 1, heroTypingWords.length))
+    }, 120)
+
+    return () => window.clearTimeout(timer)
+  }, [visibleHeroWords, heroTypingWords.length])
+
   useEffect(() => {
     const revealElements = Array.from(document.querySelectorAll<HTMLElement>('.reveal'))
 
@@ -120,7 +133,17 @@ function App() {
               <div className="max-w-3xl text-white">
                 <p className="reveal text-sm font-semibold uppercase tracking-[0.34em] text-white/72">{hero.eyebrow}</p>
                 <h1 className="reveal reveal-delay-1 mt-5 max-w-4xl text-4xl font-semibold leading-[1.03] tracking-tight sm:text-5xl lg:text-[4.35rem]">
-                  {hero.title}
+                  <span className="sr-only">{hero.title}</span>
+                  <span aria-hidden="true" className="inline-flex flex-wrap items-baseline gap-x-[0.18em] gap-y-1">
+                    {heroTypingWords.slice(0, visibleHeroWords).map((word, index) => (
+                      <span key={word + index} className="type-word">
+                        {word}
+                      </span>
+                    ))}
+                    <span className="type-cursor" aria-hidden="true">
+                      |
+                    </span>
+                  </span>
                 </h1>
                 <p className="reveal reveal-delay-2 mt-6 max-w-2xl text-lg leading-8 text-white/84">{hero.intro}</p>
                 <p className="reveal reveal-delay-3 mt-5 max-w-2xl text-base leading-7 text-white/70">{hero.supporting}</p>

@@ -144,3 +144,46 @@ button:focus-visible {
     transform: scaleY(1.08) translateY(-2px);
   }
 }
+
+.type-word {
+  display: inline-block;
+  animation: typeWordIn 0.22s ease-out both;
+}
+
+.type-cursor {
+  display: inline-block;
+  margin-left: 0.08em;
+  opacity: 1;
+  animation: caretBlink 0.9s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .type-word,
+  .type-cursor {
+    animation: none;
+  }
+}
+
+@keyframes typeWordIn {
+  from {
+    opacity: 0;
+    transform: translateY(0.3em);
+    filter: blur(1px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes caretBlink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
