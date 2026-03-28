@@ -33,24 +33,35 @@ const handleCTA = (eventName: string, section: string, label?: string) => (event
 }
 
 function App() {
-  const heroRightCopyWords = useMemo(() => hero.badge.split(' '), [])
-  const [visibleHeroRightWords, setVisibleHeroRightWords] = useState(1)
+  const heroPanelLines = useMemo(
+    () => [
+      hero.badge,
+      'Más de 25 años de trayectoria institucional',
+      '+200 integrantes · +50 clientes · gestión trazable',
+      'Soluciones adecuadas para cada uno de nuestros clientes',
+    ],
+    []
+  )
+  const [visibleHeroLine, setVisibleHeroLine] = useState(0)
+  const heroLineWords = useMemo(() => heroPanelLines[visibleHeroLine].split(' '), [heroPanelLines, visibleHeroLine])
+  const [visibleHeroLineWords, setVisibleHeroLineWords] = useState(1)
 
   useEffect(() => {
-    if (visibleHeroRightWords < heroRightCopyWords.length) {
+    if (visibleHeroLineWords < heroLineWords.length) {
       const timer = window.setTimeout(() => {
-        setVisibleHeroRightWords((current) => Math.min(current + 1, heroRightCopyWords.length))
+        setVisibleHeroLineWords((current) => Math.min(current + 1, heroLineWords.length))
       }, 180)
 
       return () => window.clearTimeout(timer)
     }
 
     const holdTimer = window.setTimeout(() => {
-      setVisibleHeroRightWords(1)
-    }, 4800)
+      setVisibleHeroLine((current) => (current + 1) % heroPanelLines.length)
+      setVisibleHeroLineWords(1)
+    }, 3600)
 
     return () => window.clearTimeout(holdTimer)
-  }, [visibleHeroRightWords, heroRightCopyWords.length])
+  }, [heroLineWords.length, heroPanelLines.length, visibleHeroLine, visibleHeroLineWords])
 
   useEffect(() => {
     const revealElements = Array.from(document.querySelectorAll<HTMLElement>('.reveal'))
@@ -169,10 +180,10 @@ function App() {
               </div>
 
               <div className="hero-visual reveal reveal-delay-2 relative rounded-[2rem] border border-white/18 bg-white/12 p-7 text-white shadow-soft backdrop-blur md:p-8">
-                <p className="text-xs font-semibold uppercase tracking-[0.32em] text-white/72">
-                  <span className="sr-only">{hero.badge}</span>
-                  <span aria-hidden="true" className="inline-flex flex-wrap items-center gap-x-[0.22em] gap-y-1">
-                    {heroRightCopyWords.slice(0, visibleHeroRightWords).map((word, index) => (
+                <div className="min-h-[96px] text-xs font-semibold uppercase tracking-[0.32em] text-white/72">
+                  <span className="sr-only">{heroPanelLines[visibleHeroLine]}</span>
+                  <span aria-hidden="true" className="inline-flex flex-wrap items-center gap-x-[0.22em] gap-y-1 leading-6">
+                    {heroLineWords.slice(0, visibleHeroLineWords).map((word, index) => (
                       <span key={word + index} className="type-word type-word-sm">
                         {word}
                       </span>
@@ -181,7 +192,7 @@ function App() {
                       |
                     </span>
                   </span>
-                </p>
+                </div>
                 <div className="mt-8 grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
                   {hero.highlights.map((item) => (
                     <div key={item.label} className="hero-bar rounded-xl border border-white/18 bg-white/[0.04] px-4 py-3">
