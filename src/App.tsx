@@ -150,13 +150,12 @@ function App() {
               </div>
 
               <div className="hero-visual reveal reveal-delay-2 relative rounded-[2rem] border border-white/18 bg-white/12 p-7 text-white shadow-soft backdrop-blur md:p-8">
-                <div className="hero-panel-sheen pointer-events-none absolute inset-x-0 top-0 h-24 rounded-t-[2rem] bg-[linear-gradient(180deg,rgba(255,255,255,0.18),transparent)]" />
                 <div className="min-h-[96px] text-xs font-semibold uppercase tracking-[0.32em] text-white/72">
                   <p>{hero.badge}</p>
                 </div>
                 <div className="mt-8 grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
                   {hero.highlights.map((item) => (
-                    <div key={item.label} className="hero-bar rounded-xl border border-white/18 bg-white/[0.04] px-4 py-3">
+                    <div key={item.label} className="rounded-xl border border-white/18 bg-white/[0.04] px-4 py-3">
                       <p className="text-3xl font-semibold tracking-tight">{item.value}</p>
                       <p className="mt-2 text-xs uppercase tracking-[0.2em] text-white/68">{item.label}</p>
                     </div>

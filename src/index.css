@@ -94,16 +94,6 @@ button:focus-visible {
     pointer-events: none;
   }
 
-  .hero-panel-sheen {
-    animation: heroSheen 7.5s ease-in-out infinite;
-  }
-
-  .hero-bar {
-    transform-origin: bottom;
-    animation: heroBars 8s ease-in-out infinite;
-    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
-  }
-
   .animate-subtle-drift {
     animation: subtleDrift 16s ease-in-out infinite;
   }
@@ -139,24 +129,3 @@ button:focus-visible {
   }
 }
 
-@keyframes heroBars {
-  0%,
-  100% {
-    transform: scaleY(0.92) translateY(0);
-  }
-  50% {
-    transform: scaleY(1.08) translateY(-2px);
-  }
-}
-
-@keyframes heroSheen {
-  0%,
-  100% {
-    opacity: 0.45;
-    transform: translateX(-6%);
-  }
-  50% {
-    opacity: 0.85;
-    transform: translateX(4%);
-  }
-}
