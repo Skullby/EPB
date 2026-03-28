@@ -14,13 +14,7 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-black/5 bg-epb-cream/90 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 lg:px-8">
         <a href="#inicio" className="flex items-center gap-3" aria-label="Ir al inicio">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-epb-ink text-sm font-bold tracking-[0.3em] text-white">
-            EPB
-          </div>
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-epb-brand">Estudio Palmero</p>
-            <p className="text-sm text-epb-slate">Recupero y gestión de mora</p>
-          </div>
+          <img src="/brand/logo.png" alt="EPB — Estudio Palmero de Belizán & Asociados" className="h-12 w-auto" />
         </a>
 
         <nav className="hidden items-center gap-6 text-sm font-medium text-epb-slate md:flex" aria-label="Principal">

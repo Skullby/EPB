@@ -15,15 +15,7 @@ export function Footer() {
         <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr_0.8fr]">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-xs font-bold tracking-[0.3em] text-epb-ink">
-                EPB
-              </div>
-              <div>
-                <p className="text-sm font-semibold tracking-[0.1em]">Estudio Palmero de Belizán</p>
-                <p className="text-xs text-white/50">& Asociados</p>
-              </div>
-            </div>
+            <img src="/brand/logo.png" alt="EPB — Estudio Palmero de Belizán & Asociados" className="h-10 w-auto brightness-0 invert" />
             <p className="mt-5 max-w-sm text-sm leading-6 text-white/60">
               Recupero de activos y gestión de mora con más de 25 años de trayectoria institucional al servicio de bancos, empresas y PyMES.
             </p>
