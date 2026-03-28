@@ -33,18 +33,18 @@ const handleCTA = (eventName: string, section: string, label?: string) => (event
 }
 
 function App() {
-  const heroTypingWords = useMemo(() => hero.title.split(' '), [])
-  const [visibleHeroWords, setVisibleHeroWords] = useState(1)
+  const heroRightCopyWords = useMemo(() => hero.badge.split(' '), [])
+  const [visibleHeroRightWords, setVisibleHeroRightWords] = useState(1)
 
   useEffect(() => {
-    if (visibleHeroWords >= heroTypingWords.length) return
+    if (visibleHeroRightWords >= heroRightCopyWords.length) return
 
     const timer = window.setTimeout(() => {
-      setVisibleHeroWords((current) => Math.min(current + 1, heroTypingWords.length))
-    }, 120)
+      setVisibleHeroRightWords((current) => Math.min(current + 1, heroRightCopyWords.length))
+    }, 100)
 
     return () => window.clearTimeout(timer)
-  }, [visibleHeroWords, heroTypingWords.length])
+  }, [visibleHeroRightWords, heroRightCopyWords.length])
 
   useEffect(() => {
     const revealElements = Array.from(document.querySelectorAll<HTMLElement>('.reveal'))
@@ -133,17 +133,7 @@ function App() {
               <div className="max-w-3xl text-white">
                 <p className="reveal text-sm font-semibold uppercase tracking-[0.34em] text-white/72">{hero.eyebrow}</p>
                 <h1 className="reveal reveal-delay-1 mt-5 max-w-4xl text-4xl font-semibold leading-[1.03] tracking-tight sm:text-5xl lg:text-[4.35rem]">
-                  <span className="sr-only">{hero.title}</span>
-                  <span aria-hidden="true" className="inline-flex flex-wrap items-baseline gap-x-[0.18em] gap-y-1">
-                    {heroTypingWords.slice(0, visibleHeroWords).map((word, index) => (
-                      <span key={word + index} className="type-word">
-                        {word}
-                      </span>
-                    ))}
-                    <span className="type-cursor" aria-hidden="true">
-                      |
-                    </span>
-                  </span>
+                  {hero.title}
                 </h1>
                 <p className="reveal reveal-delay-2 mt-6 max-w-2xl text-lg leading-8 text-white/84">{hero.intro}</p>
                 <p className="reveal reveal-delay-3 mt-5 max-w-2xl text-base leading-7 text-white/70">{hero.supporting}</p>
@@ -173,7 +163,19 @@ function App() {
               </div>
 
               <div className="hero-visual reveal reveal-delay-2 relative rounded-[2rem] border border-white/18 bg-white/12 p-7 text-white shadow-soft backdrop-blur md:p-8">
-                <p className="text-xs font-semibold uppercase tracking-[0.32em] text-white/72">{hero.badge}</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.32em] text-white/72">
+                  <span className="sr-only">{hero.badge}</span>
+                  <span aria-hidden="true" className="inline-flex flex-wrap items-center gap-x-[0.22em] gap-y-1">
+                    {heroRightCopyWords.slice(0, visibleHeroRightWords).map((word, index) => (
+                      <span key={word + index} className="type-word type-word-sm">
+                        {word}
+                      </span>
+                    ))}
+                    <span className="type-cursor type-cursor-sm" aria-hidden="true">
+                      |
+                    </span>
+                  </span>
+                </p>
                 <div className="mt-8 grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
                   {hero.highlights.map((item) => (
                     <div key={item.label} className="hero-bar rounded-xl border border-white/18 bg-white/[0.04] px-4 py-3">

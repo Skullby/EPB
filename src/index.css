@@ -150,6 +150,10 @@ button:focus-visible {
   animation: typeWordIn 0.22s ease-out both;
 }
 
+.type-word-sm {
+  animation-duration: 0.18s;
+}
+
 .type-cursor {
   display: inline-block;
   margin-left: 0.08em;
@@ -157,9 +161,15 @@ button:focus-visible {
   animation: caretBlink 0.9s steps(1) infinite;
 }
 
+.type-cursor-sm {
+  font-size: 0.95em;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .type-word,
-  .type-cursor {
+  .type-cursor,
+  .type-word-sm,
+  .type-cursor-sm {
     animation: none;
   }
 }
