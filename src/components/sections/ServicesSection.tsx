@@ -13,9 +13,9 @@ export function ServicesSection() {
 
       <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
         <article className="reveal reveal-delay-1 card-hover rounded-panel bg-epb-ink p-8 text-white shadow-soft lg:p-10">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-200">{services.main.title}</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-epb-warmAccent">{services.main.title}</p>
           <h3 className="mt-4 text-3xl font-semibold tracking-tight">{services.main.description}</h3>
-          <p className="mt-8 text-sm font-semibold uppercase tracking-[0.3em] text-emerald-200">¿Cómo lo hacemos?</p>
+          <p className="mt-8 text-sm font-semibold uppercase tracking-[0.3em] text-epb-warmAccent">¿Cómo lo hacemos?</p>
           <ul className="mt-5 space-y-4 text-base leading-8 text-slate-200">
             {services.main.steps.map((step) => (
               <li key={step}>{step}</li>

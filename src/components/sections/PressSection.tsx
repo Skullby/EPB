@@ -51,7 +51,7 @@ export function PressSection() {
         <div className="mt-12 grid gap-5 lg:grid-cols-3">
           {csr.map((item) => (
             <article key={item.title} className="rounded-card bg-epb-ink p-7 text-white shadow-soft">
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-200">{item.tag}</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-epb-warmAccent">{item.tag}</p>
               <h3 className="mt-3 text-2xl font-semibold">{item.title}</h3>
               <p className="mt-4 leading-8 text-slate-300">{item.description}</p>
             </article>

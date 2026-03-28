@@ -14,7 +14,7 @@ interface CTAButtonProps {
 
 const variants = {
   primary:
-    'cta-glow rounded-full bg-white px-7 py-4 text-center text-base font-semibold text-[#8d1f27] shadow-soft transition hover:-translate-y-0.5',
+    'cta-glow rounded-full bg-white px-7 py-4 text-center text-base font-semibold text-epb-rose shadow-soft transition hover:-translate-y-0.5',
   secondary:
     'cta-glow rounded-full border border-white/25 bg-white/10 px-7 py-4 text-center text-base font-semibold text-white transition hover:bg-white/16',
   ghost:

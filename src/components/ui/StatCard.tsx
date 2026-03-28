@@ -8,13 +8,13 @@ export function StatCard({ value, label, variant = 'light' }: StatCardProps) {
   const styles = {
     light: 'bg-epb-soft text-epb-ink',
     dark: 'border border-white/18 bg-white/[0.04] text-white',
-    outline: 'border border-[#efdfe1] bg-white text-epb-ink',
+    outline: 'border border-epb-blushLight bg-white text-epb-ink',
   }
 
   const labelStyles = {
     light: 'text-epb-brand',
     dark: 'text-white/68',
-    outline: 'text-[#8d1f27]',
+    outline: 'text-epb-rose',
   }
 
   return (

@@ -13,7 +13,7 @@ export function ToolsSection() {
 
         <div className="grid gap-5 lg:grid-cols-2">
           {tools.items.map((item) => (
-            <article key={item.title} className="reveal rounded-card border border-epb-line bg-white p-7 shadow-card">
+            <article key={item.title} className="reveal card-hover rounded-card border border-epb-line bg-white p-7 shadow-card">
               <h3 className="text-xl font-semibold text-epb-ink">{item.title}</h3>
               {'body' in item && item.body && <p className="mt-4 leading-8 text-epb-slate">{item.body}</p>}
               {'bullets' in item && item.bullets && (
@@ -28,7 +28,7 @@ export function ToolsSection() {
         </div>
 
         <div className="mt-10 rounded-panel bg-epb-ink p-8 text-white shadow-soft lg:p-10">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-200">{technology.title}</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-epb-warmAccent">{technology.title}</p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {technology.items.map((item) => (
               <div key={item} className="rounded-inner border border-white/10 bg-white/5 px-5 py-4 text-sm font-medium tracking-[0.04em] text-slate-200">

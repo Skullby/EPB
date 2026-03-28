@@ -28,6 +28,10 @@ export const clientLogos = {
   eyebrow: 'CLIENTES',
   title: 'Compañías que confían en EPB&A',
   items: ['BANCO GALICIA', 'BANCO HIPOTECARIO', 'BANCO SANTANDER', 'EMPRESAS', 'PyMES', 'MERCADO COMERCIAL'],
+  logos: Array.from({ length: 28 }, (_, i) => ({
+    src: `/brand/clients/${i + 1}.png`,
+    alt: `Cliente ${i + 1}`,
+  })),
 } as const
 
 export const services = {
