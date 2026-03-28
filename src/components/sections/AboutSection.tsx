@@ -3,7 +3,7 @@ import { SectionHeader } from '../ui/SectionHeader'
 
 export function AboutSection() {
   return (
-    <section id="nosotros" className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
+    <section id="nosotros" aria-label="Nosotros" className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
       <SectionHeader eyebrow={about.eyebrow} title={about.title} />
 
       <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">

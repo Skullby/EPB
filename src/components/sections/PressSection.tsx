@@ -4,7 +4,7 @@ import { SectionHeader } from '../ui/SectionHeader'
 
 export function PressSection() {
   return (
-    <section id="novedades" className="border-y border-black/5 bg-white/70">
+    <section id="novedades" aria-label="Prensa y novedades" className="border-y border-black/5 bg-white/70">
       <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
         <SectionHeader
           eyebrow="NOVEDADES"

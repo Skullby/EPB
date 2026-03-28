@@ -3,7 +3,7 @@ import { trackCTAEvent } from '../../lib/analytics'
 
 export function ContactSection() {
   return (
-    <section id="contacto" className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
+    <section id="contacto" aria-label="Contacto" className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
       <div className="grid gap-8 rounded-panel bg-epb-ink p-8 text-white shadow-soft lg:grid-cols-[0.95fr_1.05fr] lg:p-12">
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-epb-warmAccent">CONTACTO</p>

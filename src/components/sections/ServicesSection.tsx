@@ -4,7 +4,7 @@ import { SectionHeader } from '../ui/SectionHeader'
 
 export function ServicesSection() {
   return (
-    <section id="servicios" className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
+    <section id="servicios" aria-label="Servicios" className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
       <SectionHeader
         eyebrow={services.eyebrow}
         title={services.title}

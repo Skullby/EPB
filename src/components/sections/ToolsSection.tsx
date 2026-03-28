@@ -3,7 +3,7 @@ import { SectionHeader } from '../ui/SectionHeader'
 
 export function ToolsSection() {
   return (
-    <section id="herramientas" className="border-y border-black/5 bg-white/70">
+    <section id="herramientas" aria-label="Herramientas" className="border-y border-black/5 bg-white/70">
       <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
         <SectionHeader
           eyebrow={tools.eyebrow}
