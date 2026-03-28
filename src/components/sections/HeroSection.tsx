@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { CONTACT, hero } from '../../content/siteContent'
 import { useTypewriter } from '../../lib/useTypewriter'
 import { CTAButton } from '../ui/CTAButton'
@@ -14,6 +14,19 @@ export function HeroSection() {
   )
 
   const { words, visibleCount, currentLine } = useTypewriter(lines)
+
+  // Cycling highlight for stat boxes: lights up one at a time, then all off briefly
+  const [activeStatIdx, setActiveStatIdx] = useState(-1)
+  useEffect(() => {
+    const total = hero.highlights.length
+    let step = 0
+    const id = setInterval(() => {
+      // 0,1,2 = highlight each box; 3 = all off (pause)
+      setActiveStatIdx(step < total ? step : -1)
+      step = (step + 1) % (total + 1)
+    }, 1200)
+    return () => clearInterval(id)
+  }, [])
 
   return (
     <section id="inicio" className="relative overflow-hidden border-b border-black/5 bg-epb-cream">
@@ -103,9 +116,18 @@ export function HeroSection() {
               </span>
             </div>
             <div className="mt-8 grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-              {hero.highlights.map((item) => (
-                <div key={item.label} className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3">
-                  <p className="text-2xl font-bold tracking-tight">{item.value}</p>
+              {hero.highlights.map((item, idx) => (
+                <div
+                  key={item.label}
+                  className={`rounded-xl border px-4 py-3 transition-all duration-500 ${
+                    activeStatIdx === idx
+                      ? 'border-white/25 bg-white/[0.10] scale-[1.03] shadow-lg'
+                      : 'border-white/10 bg-white/[0.03] scale-100'
+                  }`}
+                >
+                  <p className={`text-2xl font-bold tracking-tight transition-colors duration-500 ${
+                    activeStatIdx === idx ? 'text-epb-warmAccent' : 'text-white'
+                  }`}>{item.value}</p>
                   <p className="mt-2 text-xs uppercase tracking-[0.2em] text-white/56">{item.label}</p>
                 </div>
               ))}
