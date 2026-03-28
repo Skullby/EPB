@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import type { MouseEvent } from 'react'
 import {
   CONTACT,
@@ -32,6 +33,33 @@ const handleCTA = (eventName: string, section: string, label?: string) => (event
 }
 
 function App() {
+  useEffect(() => {
+    const revealElements = Array.from(document.querySelectorAll<HTMLElement>('.reveal'))
+
+    revealElements.forEach((element) => element.classList.remove('is-visible'))
+
+    if (!('IntersectionObserver' in window)) {
+      revealElements.forEach((element) => element.classList.add('is-visible'))
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.18, rootMargin: '0px 0px -8% 0px' }
+    )
+
+    revealElements.forEach((element) => observer.observe(element))
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div className="min-h-screen bg-[#f4f1ea] text-epb-ink">
       <a
@@ -90,14 +118,14 @@ function App() {
           <div className="relative mx-auto max-w-7xl px-5 pb-10 pt-14 lg:px-8 lg:pb-14 lg:pt-24">
             <div className="grid gap-10 lg:grid-cols-[minmax(0,1.18fr)_minmax(340px,0.82fr)] lg:items-end">
               <div className="max-w-3xl text-white">
-                <p className="reveal is-visible text-sm font-semibold uppercase tracking-[0.34em] text-white/72">{hero.eyebrow}</p>
-                <h1 className="reveal reveal-delay-1 is-visible mt-5 max-w-4xl text-4xl font-semibold leading-[1.03] tracking-tight sm:text-5xl lg:text-[4.35rem]">
+                <p className="reveal text-sm font-semibold uppercase tracking-[0.34em] text-white/72">{hero.eyebrow}</p>
+                <h1 className="reveal reveal-delay-1 mt-5 max-w-4xl text-4xl font-semibold leading-[1.03] tracking-tight sm:text-5xl lg:text-[4.35rem]">
                   {hero.title}
                 </h1>
-                <p className="reveal reveal-delay-2 is-visible mt-6 max-w-2xl text-lg leading-8 text-white/84">{hero.intro}</p>
-                <p className="reveal reveal-delay-3 is-visible mt-5 max-w-2xl text-base leading-7 text-white/70">{hero.supporting}</p>
+                <p className="reveal reveal-delay-2 mt-6 max-w-2xl text-lg leading-8 text-white/84">{hero.intro}</p>
+                <p className="reveal reveal-delay-3 mt-5 max-w-2xl text-base leading-7 text-white/70">{hero.supporting}</p>
 
-                <div className="reveal reveal-delay-3 is-visible mt-8 flex flex-col gap-4 sm:flex-row">
+                <div className="reveal reveal-delay-3 mt-8 flex flex-col gap-4 sm:flex-row">
                   <a
                     href="#contacto"
                     className="cta-glow rounded-full bg-white px-7 py-4 text-center text-base font-semibold text-[#8d1f27] shadow-soft transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#8d1f27]"
@@ -116,12 +144,12 @@ function App() {
                   </a>
                 </div>
 
-                <p className="reveal reveal-delay-4 is-visible mt-7 text-xs font-semibold uppercase tracking-[0.22em] text-white/62">
+                <p className="reveal reveal-delay-4 mt-7 text-xs font-semibold uppercase tracking-[0.22em] text-white/62">
                   Estrategia • Negociación • Tecnología aplicada
                 </p>
               </div>
 
-              <div className="hero-visual reveal reveal-delay-2 is-visible relative rounded-[2rem] border border-white/18 bg-white/12 p-7 text-white shadow-soft backdrop-blur md:p-8">
+              <div className="hero-visual reveal reveal-delay-2 relative rounded-[2rem] border border-white/18 bg-white/12 p-7 text-white shadow-soft backdrop-blur md:p-8">
                 <p className="text-xs font-semibold uppercase tracking-[0.32em] text-white/72">{hero.badge}</p>
                 <div className="mt-8 grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
                   {hero.highlights.map((item) => (
@@ -140,7 +168,7 @@ function App() {
 
         <section aria-label="Clientes" className="border-b border-black/5 bg-white">
           <div className="mx-auto max-w-7xl px-5 py-10 lg:px-8 lg:py-14">
-            <div className="reveal is-visible rounded-[2rem] border border-[#ead6d8] bg-[linear-gradient(180deg,#fff_0%,#fdf8f8_100%)] p-6 shadow-soft lg:p-8">
+            <div className="reveal reveal-delay-1 rounded-[2rem] border border-[#ead6d8] bg-[linear-gradient(180deg,#fff_0%,#fdf8f8_100%)] p-6 shadow-soft lg:p-8">
               <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
                 <div className="max-w-xl">
                   <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#8d1f27]">{clientLogos.eyebrow}</p>
@@ -188,7 +216,7 @@ function App() {
         <section id="servicios" className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24">
           <SectionHeader eyebrow={services.eyebrow} title={services.title} description="Presentamos los servicios clave con una estructura más clara, priorizando lectura, jerarquía visual y comprensión rápida." />
           <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-            <article className="reveal is-visible card-hover rounded-[2rem] bg-epb-ink p-8 text-white shadow-soft lg:p-10">
+            <article className="reveal reveal-delay-1 card-hover rounded-[2rem] bg-epb-ink p-8 text-white shadow-soft lg:p-10">
               <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-200">{services.main.title}</p>
               <h3 className="mt-4 text-3xl font-semibold tracking-tight">{services.main.description}</h3>
               <p className="mt-8 text-sm font-semibold uppercase tracking-[0.3em] text-emerald-200">¿Cómo lo hacemos?</p>
@@ -199,7 +227,7 @@ function App() {
               </ul>
             </article>
 
-            <aside className="reveal reveal-delay-1 is-visible card-hover rounded-[2rem] border border-epb-line bg-white p-8 shadow-soft lg:p-10">
+            <aside className="reveal reveal-delay-2 card-hover rounded-[2rem] border border-epb-line bg-white p-8 shadow-soft lg:p-10">
               <p className="text-sm font-semibold uppercase tracking-[0.3em] text-epb-brand">Marca complementaria</p>
               <p className="mt-4 text-lg leading-8 text-epb-slate">{services.main.note}</p>
               <a
@@ -220,7 +248,7 @@ function App() {
             <SectionHeader eyebrow={tools.eyebrow} title={tools.title} description="Las capacidades operativas se organizan en bloques más claros para facilitar lectura, jerarquía y comprensión comercial." />
             <div className="grid gap-5 lg:grid-cols-2">
               {tools.items.map((item) => (
-                <article key={item.title} className="rounded-[1.75rem] border border-epb-line bg-white p-7 shadow-soft">
+                <article key={item.title} className="reveal rounded-[1.75rem] border border-epb-line bg-white p-7 shadow-soft">
                   <h3 className="text-xl font-semibold text-epb-ink">{item.title}</h3>
                   {'body' in item && item.body ? <p className="mt-4 leading-8 text-epb-slate">{item.body}</p> : null}
                   {'bullets' in item && item.bullets ? (
