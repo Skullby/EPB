@@ -44,6 +44,30 @@ export function AboutSection() {
           </div>
         </div>
       </div>
+
+      {about.leadership && about.leadership.length > 0 && (
+        <div className="mt-8 rounded-panel border border-epb-line bg-white p-8 shadow-soft reveal reveal-delay-3 lg:mt-10 lg:p-10">
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-epb-brand">LIDERAZGO</p>
+          <h3 className="mt-2 text-xl font-semibold text-epb-ink">Nuestro equipo</h3>
+          <div className="mt-6 flex flex-wrap gap-6">
+            {about.leadership.map((person) => (
+              <div key={person.name} className="md:flex md:items-start md:gap-5">
+                <div
+                  aria-hidden="true"
+                  className="h-20 w-20 shrink-0 rounded-full bg-epb-soft flex items-center justify-center text-2xl font-bold text-epb-brand"
+                >
+                  {person.initials}
+                </div>
+                <div className="mt-4 md:mt-0">
+                  <p className="text-lg font-semibold text-epb-ink">{person.name}</p>
+                  <p className="text-sm font-medium text-epb-brand">{person.role}</p>
+                  <p className="mt-2 text-sm leading-6 text-epb-slate max-w-md">{person.bio}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </section>
   )
 }

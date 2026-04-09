@@ -37,17 +37,43 @@ export const clientLogos = {
 export const services = {
   eyebrow: '¿QUÉ HACEMOS?',
   title: 'SERVICIOS',
-  main: {
-    title: '01. Gestión Corporativa',
-    description: 'Recupero de Activos de Empresas y Pymes.',
-    steps: [
-      '1. Negociación customizada por profesionales de Economía, Legales y Relaciones Públicas.',
-      '2. Gestión de terreno: visitador domiciliario',
-      '3. Encuadres objetivo y subjetivo: situación patrimonial y crediticia, con visión de expertos en cobranza',
-    ],
-    note:
-      'AgenciaPalmero es nuestra nueva marca para los servicios de recupero de mora y gestión de cobranzas temprana y tardía.',
-    noteHref: 'https://agenciapalmero.com.ar',
+  items: [
+    {
+      number: '01',
+      title: 'Gestión Corporativa',
+      description: 'Recupero de activos para bancos, empresas y PyMES con estrategia customizada por equipos multidisciplinarios de Economía, Legales y Relaciones Públicas.',
+      bullets: [
+        'Negociación customizada por profesionales multidisciplinarios',
+        'Gestión de terreno con visitador domiciliario',
+        'Encuadres objetivo y subjetivo: patrimonial y crediticio',
+      ],
+    },
+    {
+      number: '02',
+      title: 'Recupero de Activos',
+      description: 'Recupero especializado de carteras de deuda elevada para entidades financieras, con metodología probada y trazabilidad completa del proceso.',
+      bullets: [
+        'Cartera de individuos y empresas',
+        'Gestión prejudicial y extrajudicial',
+        'Monitoreo continuo de calidad y resultados',
+      ],
+    },
+    {
+      number: '03',
+      title: 'Gestión de Mora',
+      description: 'Gestión temprana y tardía de mora con canales digitales de última generación y metodologías adaptadas a cada instancia del proceso de cobranza.',
+      bullets: [
+        'Mora temprana con campañas preventivas',
+        'Mora tardía con negociación personalizada',
+        'IVR inteligente, mailing, SMS y WhatsApp',
+      ],
+    },
+  ],
+  subBrand: {
+    eyebrow: 'MARCAS DEL GRUPO',
+    title: 'AgenciaPalmero',
+    description: 'Nuestra marca para servicios de recupero de mora y gestión de cobranzas temprana y tardía.',
+    href: 'https://agenciapalmero.com.ar',
   },
 } as const
 
@@ -120,6 +146,14 @@ export const about = {
     'Liderar el mercado de cobranzas, brindando un servicio ágil y eficiente de recupero que garantice el cumplimiento eficaz de los objetivos de nuestros clientes, en el marco de un ambiente sustentable y de calidad.',
   values: ['Superación', 'Innovación', 'Transparencia', 'Talento', 'Resultados'],
   vision: 'Convertirnos en la empresa líder de recupero y gestión de mora en Argentina.',
+  leadership: [
+    {
+      name: 'Darío Palmero',
+      role: 'Fundador & Director',
+      bio: 'Fundó el estudio en 1996. Referente del sector de gestión de mora y recupero de activos en Argentina, con presencia regular en medios sobre finanzas, banca digital y liderazgo corporativo.',
+      initials: 'DP',
+    },
+  ],
 } as const
 
 export const recognitions = [
