@@ -28,7 +28,7 @@ function LogoRow({ logos, direction = 'left', speed = 35 }: {
               src={logo.src}
               alt={logo.alt}
               loading="lazy"
-              className="h-full w-full object-contain opacity-60 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
+              className="h-full w-full object-contain opacity-90 transition duration-300 hover:opacity-100"
             />
           </div>
         ))}

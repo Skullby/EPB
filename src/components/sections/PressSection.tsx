@@ -13,24 +13,9 @@ export function PressSection() {
         />
 
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {press.map(([tag, source, title, href]) => {
-            const hasLink = Boolean(href)
-
-            if (!hasLink) {
-              return (
-                <article
-                  key={`${source}-${title}`}
-                  className="flex h-full flex-col rounded-card border border-dashed border-epb-line bg-white p-6 shadow-card"
-                >
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-epb-brand">{tag}</p>
-                  <p className="mt-2 text-sm font-medium text-epb-slate">{source}</p>
-                  <h3 className="mt-4 text-xl font-semibold leading-8 text-epb-ink">{title}</h3>
-                  <span className="mt-6 inline-flex text-sm font-semibold text-amber-700">Contenido pendiente</span>
-                </article>
-              )
-            }
-
-            return (
+          {press
+            .filter(([, , , href]) => Boolean(href))
+            .map(([tag, source, title, href]) => (
               <a
                 key={`${source}-${title}`}
                 href={href}
@@ -44,8 +29,7 @@ export function PressSection() {
                 <h3 className="mt-4 text-xl font-semibold leading-8 text-epb-ink">{title}</h3>
                 <span className="mt-6 inline-flex text-sm font-semibold text-epb-ink group-hover:text-epb-brand">Leer más →</span>
               </a>
-            )
-          })}
+            ))}
         </div>
 
         <div className="mt-12 grid gap-5 lg:grid-cols-3">

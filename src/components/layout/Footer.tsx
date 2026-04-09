@@ -24,9 +24,13 @@ export function Footer() {
           {/* Navigation */}
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-epb-warmAccent">Secciones</p>
-            <nav className="mt-4 flex flex-col gap-2.5" aria-label="Pie de página">
+            <nav className="mt-3 flex flex-col" aria-label="Pie de página">
               {footerLinks.map((link) => (
-                <a key={link.href} href={link.href} className="text-sm text-white/60 transition hover:text-white">
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="inline-flex min-h-[44px] items-center text-sm text-white/60 transition hover:text-white"
+                >
                   {link.label}
                 </a>
               ))}
@@ -36,12 +40,22 @@ export function Footer() {
           {/* Contact info */}
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-epb-warmAccent">Contacto</p>
-            <div className="mt-4 space-y-2.5 text-sm text-white/60">
+            <div className="mt-4 space-y-2 text-sm text-white/60">
               <p>{CONTACT.address}</p>
               <p>{CONTACT.city}</p>
-              <a href={CONTACT.phoneHref} className="block transition hover:text-white">{CONTACT.phone}</a>
+              <a
+                href={CONTACT.phoneHref}
+                className="inline-flex min-h-[44px] items-center transition hover:text-white"
+              >
+                {CONTACT.phone}
+              </a>
               <p>{CONTACT.hotline}</p>
-              <a href={CONTACT.email} className="block transition hover:text-white">info@epb.com.ar</a>
+              <a
+                href={CONTACT.email}
+                className="inline-flex min-h-[44px] items-center transition hover:text-white"
+              >
+                info@epb.com.ar
+              </a>
             </div>
           </div>
         </div>
