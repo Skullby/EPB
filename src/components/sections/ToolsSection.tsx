@@ -1,5 +1,14 @@
+import { Database, Handshake, LineChart, Phone, ShieldCheck } from 'lucide-react'
 import { technology, tools } from '../../content/siteContent'
 import { SectionHeader } from '../ui/SectionHeader'
+
+const ICONS: Record<string, React.ComponentType<{ className?: string; 'aria-hidden'?: boolean | 'true' | 'false' }>> = {
+  'ENRIQUECIMIENTO DE DATOS': Database,
+  'BUSINESS INTELLIGENCE': LineChart,
+  'IVR, CAMPAÑAS Y MAILING': Phone,
+  'ETAPA DE NEGOCIACIÓN': Handshake,
+  'CALIDAD DEL SERVICIO': ShieldCheck,
+}
 
 export function ToolsSection() {
   return (
@@ -12,19 +21,25 @@ export function ToolsSection() {
         />
 
         <div className="grid gap-5 lg:grid-cols-2">
-          {tools.items.map((item) => (
-            <article key={item.title} className="reveal card-hover rounded-card border border-epb-line bg-white p-7 shadow-card">
-              <h3 className="text-xl font-semibold text-epb-ink">{item.title}</h3>
-              {'body' in item && item.body && <p className="mt-4 leading-8 text-epb-slate">{item.body}</p>}
-              {'bullets' in item && item.bullets && (
-                <ul className="mt-4 space-y-3 text-base leading-8 text-epb-slate">
-                  {item.bullets.map((bullet) => (
-                    <li key={bullet}>• {bullet}</li>
-                  ))}
-                </ul>
-              )}
-            </article>
-          ))}
+          {tools.items.map((item) => {
+            const Icon = ICONS[item.title]
+            return (
+              <article key={item.title} className="reveal card-hover h-full flex flex-col rounded-card border border-epb-line bg-white p-7 shadow-card">
+                <div className="h-12 w-12 rounded-full bg-epb-warm flex items-center justify-center" aria-hidden="true">
+                  {Icon && <Icon className="h-6 w-6 text-epb-brand stroke-[1.75]" aria-hidden="true" />}
+                </div>
+                <h3 className="mt-4 text-xl font-semibold text-epb-ink">{item.title}</h3>
+                {'body' in item && item.body && <p className="mt-4 leading-8 text-epb-slate">{item.body}</p>}
+                {'bullets' in item && item.bullets && (
+                  <ul className="mt-auto pt-5 space-y-2 list-disc pl-5 marker:text-epb-brand text-base leading-8 text-epb-slate">
+                    {item.bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                )}
+              </article>
+            )
+          })}
         </div>
 
         <div className="mt-10 rounded-panel bg-epb-ink p-8 text-white shadow-soft lg:p-10">

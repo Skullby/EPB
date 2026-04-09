@@ -56,10 +56,22 @@ export function ContactSection() {
             <p>{CONTACT.hotline}</p>
           </div>
           <p className="mt-8 text-sm font-semibold uppercase tracking-[0.3em] text-epb-warmAccent">HORARIO DE ATENCIÓN</p>
-          <div className="mt-4 space-y-3 text-base leading-8 text-slate-300">
-            <p>Atención Telefónica Lunes a Viernes 07:30 a 20:30hs - Sábados 8 a 12.30hs</p>
-            <p>Caja Lunes a Viernes de 9 a 18hs - Sábados 9 a 12hs. / Chatbot 24hs</p>
-          </div>
+          <dl className="mt-4 grid grid-cols-1 gap-4 text-sm leading-6 text-slate-300 sm:grid-cols-2">
+            <div>
+              <dt className="font-semibold text-white">Atención Telefónica</dt>
+              <dd className="mt-1 tabular-nums">Lun–Vie · 07:30 – 20:30</dd>
+              <dd className="tabular-nums">Sábados · 08:00 – 12:30</dd>
+            </div>
+            <div>
+              <dt className="font-semibold text-white">Caja</dt>
+              <dd className="mt-1 tabular-nums">Lun–Vie · 09:00 – 18:00</dd>
+              <dd className="tabular-nums">Sábados · 09:00 – 12:00</dd>
+            </div>
+            <div className="sm:col-span-2">
+              <dt className="font-semibold text-white">Chatbot</dt>
+              <dd className="mt-1">24 hs · todos los días</dd>
+            </div>
+          </dl>
         </div>
 
         {/* Right column — contact form + sidebar */}

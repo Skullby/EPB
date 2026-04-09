@@ -8,6 +8,7 @@ import { AboutSection } from './components/sections/AboutSection'
 import { RecognitionsSection } from './components/sections/RecognitionsSection'
 import { PressSection } from './components/sections/PressSection'
 import { ContactSection } from './components/sections/ContactSection'
+import { PortalStrip } from './components/sections/PortalStrip'
 import { useScrollReveal } from './lib/useScrollReveal'
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <RecognitionsSection />
         <PressSection />
         <ContactSection />
+        <PortalStrip />
       </main>
 
       <Footer />
