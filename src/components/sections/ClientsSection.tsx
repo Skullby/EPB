@@ -59,15 +59,15 @@ export function ClientsSection() {
 
             <dl className="grid grid-cols-3 gap-3">
               <div className="rounded-2xl border border-epb-blushLight bg-white px-3 py-4 text-center">
-                <dt className="text-[11px] font-semibold uppercase tracking-[0.18em] text-epb-rose">Trayectoria</dt>
+                <dt className="text-[10px] font-semibold uppercase tracking-[0.1em] text-epb-rose sm:text-[11px] sm:tracking-[0.18em]">Trayectoria</dt>
                 <dd className="mt-1 text-2xl font-bold text-epb-ink">25+</dd>
               </div>
               <div className="rounded-2xl border border-epb-blushLight bg-white px-3 py-4 text-center">
-                <dt className="text-[11px] font-semibold uppercase tracking-[0.18em] text-epb-rose">Clientes</dt>
+                <dt className="text-[10px] font-semibold uppercase tracking-[0.1em] text-epb-rose sm:text-[11px] sm:tracking-[0.18em]">Clientes</dt>
                 <dd className="mt-1 text-2xl font-bold text-epb-ink">50+</dd>
               </div>
               <div className="rounded-2xl border border-epb-blushLight bg-white px-3 py-4 text-center">
-                <dt className="text-[11px] font-semibold uppercase tracking-[0.18em] text-epb-rose">Equipo</dt>
+                <dt className="text-[10px] font-semibold uppercase tracking-[0.1em] text-epb-rose sm:text-[11px] sm:tracking-[0.18em]">Equipo</dt>
                 <dd className="mt-1 text-2xl font-bold text-epb-ink">200+</dd>
               </div>
             </dl>
